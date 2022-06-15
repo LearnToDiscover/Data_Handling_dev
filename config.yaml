@@ -7,10 +7,12 @@
 # dc: Data Carpentry
 # lc: Library Carpentry
 # cp: Carpentries (to use for instructor traning for instance)
-carpentry: cp
+carpentry: l2d
+varnish: LearnToDiscover/varnish
+sandpaper: LearnToDiscover/sandpaper@l2d
 
 # Overall title for pages.
-title: Lesson Title
+title: Data Handling
 
 # Date the lesson was created (this is empty by default)
 created: ~
@@ -35,20 +37,20 @@ branch: main
 contact: team@carpentries.org
 
 # Navigation ------------------------------------------------
-# 
+#
 # Use the following menu items to specify the order of
 # individual pages in each dropdown section. Leave blank to
 # include all pages in the folder.
 #
 # Example -------------
-# 
+#
 # episodes:
 # - introduction.md
 # - first-steps.md
-# 
+#
 # learners:
 # - setup.md
-# 
+#
 # instructors:
 # - instructor-notes.md
 #
@@ -56,15 +58,17 @@ contact: team@carpentries.org
 # - one-learner.md
 # - another-learner.md
 
-# Order of episodes in your lesson 
-episodes: 
+# Order of episodes in your lesson
+episodes:
+  - 01-data_frames_1.Rmd
+  - 02-data_frames_2.Rmd
 
 # Information for Learners
-learners: 
+learners:
 
 # Information for Instructors
-instructors: 
+instructors:
 
 # Learner Profiles
-profiles: 
+profiles:
 

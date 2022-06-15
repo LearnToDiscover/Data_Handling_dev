@@ -2,48 +2,33 @@
 title: Setup
 ---
 
-Setup instructions live in this document. Please specify the tools and the data
-sets the Learner needs to have installed.
-
 ## Data Sets
 
-Download the [data zip file](data/data.zip) and unzip it to your Desktop
+Please download the [data zip file](data/data.zip) and unzip it to your Desktop. It contains:
 
-## Software Setup
+:::::::::::::::: checklist
 
-::::::::::::::::::::::::::::::::::::::: discussion
+## Data files
+- [Diabetes data](data/diabetes_data.csv)
+- [Everley data](data/everleys_data.csv)
+- [Cervical cancer data](data/cervical_cancer.csv)
+- [Loan data](data/loan_data.csv)
 
-### Details
+::::::::::::::::
+The code assumes a path to the data files as '/data/...' or '\data\...', respectively. Please create a subfolder called 'data' in your current directory and put the data files in it. 
 
-Setup for different systems can be presented in dropdown menus via a `solution`
-tag. They will join to this discussion block, so you can give a general overview
-of the software used in this lesson here and fill out the individual operating
-systems (and potentially add more, e.g. online setup) in the solutions blocks.
+Figure files for download from the Course page:
 
-:::::::::::::::::::::::::::::::::::::::::::::::::::
+:::::::::::::::: checklist
+## Figures
+- [diabetes_data_screenshot.png](fig/diabetes_data_screenshot.png)
+- [subfolder_data.png](fig/subfolder_data.png)
 
-:::::::::::::::: solution
+::::::::::::::::
 
-### Windows
-
-Use PuTTY
-
-:::::::::::::::::::::::::
-
-:::::::::::::::: solution
-
-### MacOS
-
-Use Terminal.app
-
-:::::::::::::::::::::::::
+To include the figures in your notebook, please create a subfolder called 'figs' in your current directory and put the figure files in it. You can check the pdf of the notebook for reference. 
 
 
-:::::::::::::::: solution
 
-### Linux
 
-Use Terminal
-
-:::::::::::::::::::::::::
 
