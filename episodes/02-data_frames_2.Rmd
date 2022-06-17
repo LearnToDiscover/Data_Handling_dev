@@ -13,18 +13,18 @@ exercises: 60
 ::::::::::::::::::::::::::::::::::::: questions 
 
 - What is bivariate or multivariate analysis?
-- How are bivariate properties of data understood?
-- How can a bivariate quantity explained?
-- When to use correlation matrix?
-- What are the ways to study relationships in a dataset?
+- How are bivariate properties of data interpreted?
+- How can a bivariate quantity be explained?
+- When to use the correlation matrix?
+- What are the ways to study relationships in data?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::: objectives
 
-- Practice working with Pandas dataframes and Numpy arrays.
+- Practise working with Pandas dataframes and Numpy arrays.
 - Bivariate analysis of Pandas dataframe / Numpy array.
-- Understanding Pearson correlation coefficient ($PCC$).
+- The Pearson correlation coefficient ($PCC$).
 - Correlation Matrix as an example of bivariate summary statistics.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
@@ -156,7 +156,7 @@ In this lesson we aim to get an overview of the similarities in a data set. We f
 For recordings of variables that are contained e.g. in the columns of a dataframe, we often assume the independence of samples: the measurement in one row does not depend on the recording in another row. Therefore all results of the features obtained e.g. under `describe` will not depend on the order of the rows. Also, while the numbers obtained from different rows can be similar (or even the same) by chance, there is no way to _predict_ the values in one row from the values of another row. 
 </p>
 <p style='text-align: justify;'>
-When comparing different variables arranged in columns, in contrast, this is not necessarily so. (We assume here that they are consistent, e.g. all values in a single row obtained from the same subject.) The values in one column can related to the numbers in another column and specifically they can show degrees of similarity. If, for instance, we have a number of subjects investigated some of who have an inflammatory disease and some of who are healthy controls, an inflammatory marker might be increased in the diseased subjects. If several markers are recorded from a each subject (i.e. more than one column in the data frame), the values of several inflammatory markers may be elevated simultaneously in the diseased subjects. Thus, the profiles of these markers across the whole group will show a certain similarity.
+When comparing different variables arranged in columns, in contrast, this is not necessarily so. (We assume here that they are consistent, e.g. all values in a single row obtained from the same subject.) The values in one column can be related to the numbers in another column and specifically they can show degrees of similarity. If, for instance, we have a number of subjects investigated some of who have an inflammatory disease and some of who are healthy controls, an inflammatory marker might be increased in the diseased subjects. If several markers are recorded from each subject (i.e. more than one column in the data frame), the values of several inflammatory markers may be elevated simultaneously in the diseased subjects. Thus, the profiles of these markers across the whole group will show a certain similarity.
 </p>
 <p style='text-align: justify;'>
 The goal of multivariate data analysis is to find out whether similarities (or, in general, any relationships) between recorded variables exist. 
@@ -240,7 +240,7 @@ plt.show()
 ### **Visual Search for Similarity: the Scatter Plot**
 
 <p style='text-align: justify;'>
-In Matplotlib, the function `scatter` allows plotting of one variable against the other. This is a common way to visually check for relationships between individual columns in a datframe. 
+In Matplotlib, the function `scatter` allows plotting of one variable against the other. This is a common way to visually check for relationships between individual columns in a dataframe. 
 </p>
 
 ```{python}
@@ -255,7 +255,7 @@ plt.show()
 ```
 
 <p style='text-align: justify;'>
-The data points appear to be grouped into two clouds. We will not deal with this qualitative aspect further at present.
+The data points appear to be grouped into two clouds. We will not deal with this qualitative aspect further at present. Grouping will be discussed as Unsupervised Machine Learning or Clustering later in the Course.
 </p>
 <p style='text-align: justify;'>
 However, from the plot one might also suspect that there is a trend of heavier people being taller. For instance, we note that there are no points in the lower right corner of the plot (weight >160 pounds and height < 65 inches). 
@@ -291,7 +291,7 @@ From the plot one might suspect that a larger systolic value is connected with a
 
 ## The Correlation Coefficient
 <p style='text-align: justify;'>
-Bivariate measures are quantities that are calculated from a two variables of data.
+Bivariate measures are quantities that are calculated from two variables of data.
 Bivariate features are the most widely used subset of multivariate features - all of which require more than one variable in order to be calculated.
 </p>
 
@@ -313,7 +313,7 @@ Two perfectly antisymmetrical data sets (one variable can be obtained by multipl
 The $PCC$ is an **undirected** measure in the sense that its value for the comparison between data set 1 and data set 2 is the same as the $PCC$ between data set 2 and data set 1.
 </p>
 <p style='text-align: justify;'>
-A direct way to calculate the $PCC$ of two data-sets is to use the function `corr` applied to a dataframe. For instance we can apply it to the Everleys data:
+A direct way to calculate the $PCC$ of two data-sets is to use the function `corr` applied to a dataframe. For instance, we can apply it to the Everleys data:
 </p>
 
 ```{python, results = 'hold'}
@@ -322,7 +322,7 @@ df_everley.corr()
 ```
 
 <p style='text-align: justify;'>
-The result as a matrix of two by two numbers. Along the diagonal (top left and bottom right) are the values for the comparison of a column to itself. As any dataset is identical with itself, the values are one by construction of the matrix. 
+The result as a matrix of two-by-two numbers. Along the diagonal (top left and bottom right) are the values for the comparison of a column to itself. As any dataset is identical with itself, the values are one by definition. 
 </p>
 <p style='text-align: justify;'>
 The non-diagonal elements show that the $CC \approx-0.26$ for the two data sets. Both $CC(12)$ and $CC(21)$ are given in the matrix but because of the symmetry we would only need to report one of the two. 
@@ -335,7 +335,7 @@ The non-diagonal elements show that the $CC \approx-0.26$ for the two data sets.
 Note that in this lesson we introduce how to calculate the $PCC$ but do not discuss its significance. E.g. the interpretation of the value above needs to be checked against the fact that we only have 18 data points. Specifically, we refrain from concluding that because the $PCC$ is negative, a high value of the calcium concentration is associated with a small value of the sodium concentration (relative to their respective means). 
 </p>
 <p style='text-align: justify;'>
-One quantitative way to assess whether or not a given value of the $PCC$ is meaningful or not is to use surrogate data. In our case, we could e.g. create random numbers in an array with shape (18, 2) such that the two means and standard deviations are the same as in the Everley data but the two columns are indepedent of each other. Creating many realisations, we can check what distribution of $PCC$ values is expected from the randomly generated data and compare this with the values from the Everleys data.
+One quantitative way to assess whether or not a given value of the $PCC$ is meaningful or not is to use surrogate data. In our case, we could e.g. create random numbers in an array with shape (18, 2) such that the two means and standard deviations are the same as in the Everley data but the two columns are independent of each other. Creating many realisations, we can check what distribution of $PCC$ values is expected from the randomly generated data and compare this with the values from the Everleys data.
 </p>
 
 ::::::::::::::::::::::::::
@@ -493,7 +493,7 @@ plt.show()
 ```
 
 <p style='text-align: justify;'>
-Note that we have specified the colour map 'coolwarm'. For a list of Matplotlib colour maps, please refer to the [gallery in the documentation](https://matplotlib.org/3.1.1/gallery/color/colormap_reference.html). The names to use are on the left hand side of the colour bar.
+Note that we have specified the colour map 'coolwarm'. For a list of Matplotlib colour maps, please refer to the [gallery in the documentation](https://matplotlib.org/3.1.1/gallery/color/colormap_reference.html). The names to use in the code are on the left hand side of the colour bar.
 </p>
 
 Let us add two more features to improve the figure.
@@ -723,7 +723,7 @@ plt.show()
 ```
 
 <p style='text-align: justify;'>
-This histogram shows that the data have a distribution that is shifted towards positive correlations. However, only four values are absolutely larger than 0.5 (three positive, one negative). 
+This histogram shows that the data have a distribution that is shifted towards positive correlations. However, only four values are (absolutely) larger than 0.5 (three positive, one negative). 
 </p>
 
 Next we can get the average (absolute) correlation per column.
