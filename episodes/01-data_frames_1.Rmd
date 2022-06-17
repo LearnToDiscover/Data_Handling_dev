@@ -19,10 +19,10 @@ exercises: 60
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::: objectives
-- Import data set as dataframe
+- Import data set as Pandas dataframe
 - Inspect data frame and access data
 - Produce an overview of data features
-- Create data plots using matplotlib
+- Create data plots using Matplotlib
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 <br>
@@ -110,13 +110,13 @@ The small practice data file for this section is called 'everleys_data.csv' and 
 The file `everleys_data.csv` contains blood concentrations of calcium and sodium ions from 17 patients with Everley's syndrome. The data are taken from a [BMJ statistics tutorial](https://www.bmj.com/about-bmj/resources-readers/publications/statistics-square-one/7-t-tests). The data are stored as comma-separated values (csv), two values for each patient.
 </p>
 <p style='text-align: justify;'>
-To get to know a dataset, we will use the Pandas package and the Matplotlib plotting. The Pandas package for data science is included in the Anaconda distribution of Python. Check this [link for installation instructions](https://pandas.pydata.org/getting_started.html) to get started. 
+To get to know a dataset, we will use the Pandas package and the Matplotlib plotting library. The Pandas package for data science is included in the Anaconda distribution of Python. Check this [link for installation instructions](https://pandas.pydata.org/getting_started.html) to get started. 
 </p>
 
-If you are not using the Anaconda distribution, pease refer to [these guidelines](https://pandas.pydata.org/docs/getting_started/install.html). 
+If you are not using the Anaconda distribution, please refer to [these guidelines](https://pandas.pydata.org/docs/getting_started/install.html). 
 
 <p style='text-align: justify;'>
-To use the functions contained in Pandas they need to be imported. Our dataset is in '.csv' format, and we therefore need to read it from a csv file. For this, we import the function `read_csv`. This will create a _Pandas dataframe_.
+To use the functions contained in Pandas they need to be imported. Our dataset is in '.csv' format, and we therefore need to read it from a csv file. For this, we import the function `read_csv`. This function will create a _Pandas dataframe_.
 </p>
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
@@ -154,10 +154,9 @@ df = read_csv("data/everleys_data.csv")
 
 
 ```{python}
-# please uncomment for Windows
 # (please go to previous cell if using Mac OSX or Linux)
 
-# df = read_csv("data\everleys_data.csv") 
+df = read_csv("data\everleys_data.csv") 
 
 ```
 
@@ -329,7 +328,7 @@ df['calcium'][[1, 3, 7]]
 ```
 
 <p style='text-align: justify;'>
-Another possibility to index and slice a dataframe is the use of the 'index location' or `iloc` property. It refers first to rows and then to columns by index, all within a single pair of brackets. For example, to get all rows `:` of the first column (index `0`), you use:
+Another possibility to index and slice a dataframe is the use of the 'index location' or `iloc` property. It refers first to rows and then to columns by index, all within a single pair of brackets. For example, to get all rows of the first column (index `0`), you use:
 </p>
 
 ```{python}
@@ -433,7 +432,7 @@ description
 ```
 
 <p style='text-align: justify;'>
-The `describe` function produces a new dataframe (here called 'descrition') that contains the number of samples, the mean, the standard deviation, minimum, 25th, 50th, 75th  percentile, and the maximum value for each column of the data. Note that the indices of the rows have now been replaced by strings. To access rows, it is possible to refer to those names using the `loc` property. E.g. to access the mean of the calcium concentrations from the description, each of the following is valid:
+The `describe` function produces a new dataframe (here called 'description') that contains the number of samples, the mean, the standard deviation, minimum, 25th, 50th, 75th  percentile, and the maximum value for each column of the data. Note that the indices of the rows have now been replaced by strings. To access rows, it is possible to refer to those names using the `loc` property. E.g. to access the mean of the calcium concentrations from the description, each of the following is valid:
 </p>
 
 
@@ -456,7 +455,7 @@ description['calcium'][1]
 ## DIY4: Practice
 
 <p style='text-align: justify;'>
-Use your own .csv data set to practice. (If you don't have a data set at hand, any excel table can be exported as .csv.) Read it into a dataframe, check its header, access indivdual values or sets of values. Create a statistics using `describe` and check for missing values using `.isnull`.
+Use your own .csv data set to practice. (If you don't have a data set at hand, any excel table can be exported as .csv.) Read it into a dataframe, check its header, access individual values or sets of values. Create a statistics using `describe` and check for missing values using `.isnull`.
 </p>
 
 ::::::::::::::::: solution
@@ -841,7 +840,7 @@ plt.show()
 ```
 
 <p style='text-align: justify;'>
-The bars in this plot go up and down. Note, however, that the vertical axis has values ranging from -10^(-15)^ to +10^(-15)^. This means that for all practical purposes all means are zero. This is not a coincidence. The original values have been normalised to zero mean for the purpose of applying some machine learning algorithm to them. 
+The bars in this plot go up and down. Note, however, that the vertical axis has values ranging from -10^(-16)^ to +10^(-16)^. This means that for all practical purposes all means are zero. This is not a coincidence. The original values have been normalised to zero mean for the purpose of applying some machine learning algorithm to them. 
 </p>
 
 In this example, we see how important it is to check the data before working with them. 
