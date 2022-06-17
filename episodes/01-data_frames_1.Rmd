@@ -25,6 +25,22 @@ exercises: 60
 - Create data plots using matplotlib
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
+<br>
+<p align = "center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/jdWOAzK81VE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</p>
+<br>
+
+<p align = "center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/zw6t3yHEqGU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</p>
+<br>
+
+<p align = "center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/mljXcIzx4ps" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</p>
+<br>
+
 :::::::::::::::::: prereq 
 
 ## Prerequisites
@@ -618,12 +634,12 @@ The way to use `subplots` is to first set up a figure environment (below it is c
 As an example, let us create a [boxplot](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.boxplot.html#matplotlib.pyplot.boxplot|) of the calcium variable. As an argument of the function we need to specify the data. We can use the values of the 'calcium' concentrations from the column with that name:
 </p>
 
-```{python, results='hide', results = 'hold'}
+```{python, results='hide', collapse=TRUE}
 fig, ax = plt.subplots()
 
 ax.boxplot(df['calcium'])
 
-ax.set_title('Boxplot of Everley Calcium');
+ax.set_title('Boxplot of Everley Calcium')
 
 plt.show()
 ```
@@ -636,7 +652,7 @@ The value of `subplots` becomes apparent when we try to create more than one plo
 Here is an example to create two boxplots next to each other. The keyword arguments to use is 'ncols' which is the number of figures per row. 'ncols=2' indicates that you want to have two plots next to each other. 
 </p>
 
-```{python, results='hide', results = 'hold'}
+```{python, results='hide', collapse=TRUE}
 fig, ax = plt.subplots(ncols=2)
 
 ax[0].boxplot(df['calcium'])
@@ -655,7 +671,7 @@ Note that you now have to refer to each of the subplots by indexing the coordina
 If you prefer to have the boxplots of both columns in a single figure, that can also be done:
 
 
-```{python, results='hide', results = 'hold'}
+```{python, results='hide', collapse=TRUE}
 fig, ax = plt.subplots(ncols=1, nrows=1)
 
 ax.boxplot([df['calcium'], df['sodium']], positions=[1, 2])
@@ -672,7 +688,7 @@ Plot the boxplots of the 'ApplicantIncome' and the 'CoapplicantIncome' in the Lo
 
 ::::::::::::::::: solution
 
-```{python, results='hide', results = 'hold'}
+```{python, results='hide', collapse=TRUE}
 fig, ax = plt.subplots(ncols=1, nrows=1)
 ax.boxplot([df_loan['ApplicantIncome'], df_loan['CoapplicantIncome']], positions=[1, 2])
 ax.set_title('Applicant Income (left) & Co-Applicant Income (right)');
@@ -688,7 +704,7 @@ plt.show()
 Another good overview is the histogram: Containers or 'bins' are created over the range of values found within a column and the count of the values for each bin is plotted on the vertical axis.
 </p>
 
-```{python, results='hide', results = 'hold'}
+```{python, results='hide', collapse=TRUE}
 fig, ax = plt.subplots(ncols=2, nrows=1)
 
 ax[0].hist(df['calcium'])
@@ -708,7 +724,7 @@ This also shows how to add labels to the axes and a title to the overall figure.
 This uses the default value for the generation of the bins. It is set to 10 bins over the range of which values are found. The number of bins in the histogram can be changed using the keyword argument 'bins':
 
 
-```{python, results='hide', results = 'hold'}
+```{python, results='hide', collapse=TRUE}
 fig, ax = plt.subplots(ncols=2, nrows=1)
 
 ax[0].hist(df['calcium'], bins=5)
@@ -725,7 +741,7 @@ plt.show()
 Note how the y-label of the right figure is not placed well. To correct for the placement of the labels and the title, you can use 
 `tight_layout` on the figure:
 
-```{python, results='hide', results = 'hold'}
+```{python, results='hide', collapse=TRUE}
 fig, ax = plt.subplots(ncols=2, nrows=1)
 
 ax[0].hist(df['calcium'], bins=5)
@@ -747,7 +763,7 @@ Take the loan data and display the histogram of the loan amount that people aske
 ::::::::::::::::: solution
 
 
-```{python, results='hide', results = 'hold'}
+```{python, results='hide', collapse=TRUE}
 # Histogram of loan amounts in k£
 fig, ax = plt.subplots()
 ax.hist(df_loan['LoanAmount'], bins=20)
@@ -814,7 +830,7 @@ print('The columns are: ', list(df_diabetes.columns))
 print('The medians are: ', conc_means, 2)
 ```
 
-```{python, results='hide', results = 'hold'}
+```{python, results='hide', collapse=TRUE}
 fig, ax = plt.subplots()
 
 bins = range(10)
@@ -901,7 +917,7 @@ print('This is', round(100*cervix_smoker.sum() / cervix_rows, 1), '% of the tota
 ```
 
 ### Q5
-```{python, results='hide', results = 'hold'}
+```{python, results='hide', collapse=TRUE}
 fig, ax = plt.subplots()
 
 ax.hist(df_cervix['Age'], bins=50)
