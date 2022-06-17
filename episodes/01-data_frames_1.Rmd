@@ -154,9 +154,10 @@ df = read_csv("data/everleys_data.csv")
 
 
 ```{python}
+# Please uncomment for Windows
 # (please go to previous cell if using Mac OSX or Linux)
 
-df = read_csv("data\everleys_data.csv") 
+# df = read_csv("data\everleys_data.csv") 
 
 ```
 
@@ -620,8 +621,7 @@ However, we are going to use __Matplotlib__ extensively later on in the course, 
 For this, we import the function `subplots` from the [pyplot library](https://matplotlib.org/stable/api/pyplot_summary.html):
 
 ```{python}
-from matplotlib.pyplot import subplots
-import matplotlib.pyplot as plt
+from matplotlib.pyplot import subplots, show
 
 ```
 
@@ -634,13 +634,13 @@ As an example, let us create a [boxplot](https://matplotlib.org/api/_as_gen/matp
 </p>
 
 ```{python, results='hide', collapse=TRUE}
-fig, ax = plt.subplots()
+fig, ax = subplots()
 
 ax.boxplot(df['calcium'])
 
 ax.set_title('Boxplot of Everley Calcium')
 
-plt.show()
+show()
 ```
 
 Note how following the actual plot we define the title of the plot by referring to the same coordinate system `ax`.
@@ -652,7 +652,7 @@ Here is an example to create two boxplots next to each other. The keyword argume
 </p>
 
 ```{python, results='hide', collapse=TRUE}
-fig, ax = plt.subplots(ncols=2)
+fig, ax = subplots(ncols=2)
 
 ax[0].boxplot(df['calcium'])
 ax[0].set_title('Calcium')
@@ -660,7 +660,7 @@ ax[0].set_title('Calcium')
 ax[1].boxplot(df['sodium'])
 ax[1].set_title('Sodium');
 
-plt.show()
+show()
 
 ```
 
@@ -671,12 +671,12 @@ If you prefer to have the boxplots of both columns in a single figure, that can 
 
 
 ```{python, results='hide', collapse=TRUE}
-fig, ax = plt.subplots(ncols=1, nrows=1)
+fig, ax = subplots(ncols=1, nrows=1)
 
 ax.boxplot([df['calcium'], df['sodium']], positions=[1, 2])
 ax.set_title('Boxplot of Calcium (left) and Sodium (right)')
 
-plt.show()
+show()
 ```
 
 
@@ -688,11 +688,11 @@ Plot the boxplots of the 'ApplicantIncome' and the 'CoapplicantIncome' in the Lo
 ::::::::::::::::: solution
 
 ```{python, results='hide', collapse=TRUE}
-fig, ax = plt.subplots(ncols=1, nrows=1)
+fig, ax = subplots(ncols=1, nrows=1)
 ax.boxplot([df_loan['ApplicantIncome'], df_loan['CoapplicantIncome']], positions=[1, 2])
 ax.set_title('Applicant Income (left) & Co-Applicant Income (right)');
 
-plt.show()
+show()
 ```
 
 ::::::::::::::::: 
@@ -704,7 +704,7 @@ Another good overview is the histogram: Containers or 'bins' are created over th
 </p>
 
 ```{python, results='hide', collapse=TRUE}
-fig, ax = plt.subplots(ncols=2, nrows=1)
+fig, ax = subplots(ncols=2, nrows=1)
 
 ax[0].hist(df['calcium'])
 ax[0].set(xlabel='Calcium', ylabel='Count');
@@ -714,7 +714,7 @@ ax[1].set(xlabel='Sodium', ylabel='Count');
 
 fig.suptitle('Histograms of Everley concentrations', fontsize=15);
 
-plt.show()
+show()
 ```
 
 
@@ -724,7 +724,7 @@ This uses the default value for the generation of the bins. It is set to 10 bins
 
 
 ```{python, results='hide', collapse=TRUE}
-fig, ax = plt.subplots(ncols=2, nrows=1)
+fig, ax = subplots(ncols=2, nrows=1)
 
 ax[0].hist(df['calcium'], bins=5)
 ax[0].set(xlabel='Calcium, 5 bins', ylabel='Count');
@@ -733,7 +733,7 @@ ax[1].hist(df['calcium'], bins=15)
 ax[1].set(xlabel='Calcium, 15 bins', ylabel='Count');
 fig.suptitle('Histograms with Different Binnings', fontsize=16);
 
-plt.show()
+show()
 ```
 
 
@@ -741,7 +741,7 @@ Note how the y-label of the right figure is not placed well. To correct for the 
 `tight_layout` on the figure:
 
 ```{python, results='hide', collapse=TRUE}
-fig, ax = plt.subplots(ncols=2, nrows=1)
+fig, ax = subplots(ncols=2, nrows=1)
 
 ax[0].hist(df['calcium'], bins=5)
 ax[0].set(xlabel='Calcium, 5 bins', ylabel='Count');
@@ -751,7 +751,7 @@ ax[1].set(xlabel='Calcium, 15 bins', ylabel='Count');
 fig.suptitle('Histograms with Different Binnings', fontsize=16);
 fig.tight_layout()
 
-plt.show()
+show()
 ```
 
 ::::::::::::::::::::::::::::::: challenge 
@@ -764,12 +764,12 @@ Take the loan data and display the histogram of the loan amount that people aske
 
 ```{python, results='hide', collapse=TRUE}
 # Histogram of loan amounts in k£
-fig, ax = plt.subplots()
+fig, ax = subplots()
 ax.hist(df_loan['LoanAmount'], bins=20)
 ax.set(xlabel='Loan amount', ylabel='Count');
 ax.set_title('Histograms of Loan Amounts', fontsize=16);
 
-plt.show()
+show()
 ```
 
 ::::::::::::::::: 
@@ -830,13 +830,13 @@ print('The medians are: ', conc_means, 2)
 ```
 
 ```{python, results='hide', collapse=TRUE}
-fig, ax = plt.subplots()
+fig, ax = subplots()
 
 bins = range(10)
 
 ax.bar(bins, conc_means);
 
-plt.show()
+show()
 ```
 
 <p style='text-align: justify;'>
@@ -917,13 +917,13 @@ print('This is', round(100*cervix_smoker.sum() / cervix_rows, 1), '% of the tota
 
 ### Q5
 ```{python, results='hide', collapse=TRUE}
-fig, ax = plt.subplots()
+fig, ax = subplots()
 
 ax.hist(df_cervix['Age'], bins=50)
 ax.set_xlabel('Age', fontsize=20)
 ax.set_ylabel('Count', fontsize=20)
 ax.set_title('Age distribution of subjects',  fontsize=24);
-plt.show()
+show()
 ```
 
 ### Q6
