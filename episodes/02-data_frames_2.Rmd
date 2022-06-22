@@ -51,6 +51,14 @@ exercises: 60
 
 The following cell contains functions that need to be imported, please execute it before continuing with the Introduction.
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(reticulate)
+
+use_virtualenv("r-env")
+```
+
+
 
 ```{python}
 # To import data from a csv file into a Pandas dataframe

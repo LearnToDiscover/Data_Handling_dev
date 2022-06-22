@@ -75,6 +75,13 @@ We might want to, for example, determine the relative amounts of IP3R, DNA and s
 First, we want to read in an image. For this part of the lesson, we use a histological slice through an axon bundle as an example. We use matplotlib's image module, from which we import `imread` to store the image in a variable called img. The function `imread` can interpret many different image formats, including jpg, png and tif images.
 </p>
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(reticulate)
+
+use_virtualenv("r-env")
+```
+
 ```{python}
 from matplotlib.image import imread
 
