@@ -35,7 +35,7 @@ jobs:
         with:
             lfs: 'true'
 
-      - name: Check out LFS objects
+      - name: "Check out LFS objects"
       - run: git lfs checkout episodes/fig/*.png
 
       - name: "Set up Python"
