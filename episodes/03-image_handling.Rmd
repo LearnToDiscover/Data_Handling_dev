@@ -66,7 +66,7 @@ The example in [Figure 1](#ratCerebellum) is an image from the cell [image libra
 We might want to, for example, determine the relative amounts of IP3R, DNA and synaptophysin in this image. This tutorial will guide you through some of the steps to get you started with processing images of all sorts using Python. At the end, you will have the opportunity to come back to this image example and perform some analysis of your own.
 </p>
 
-![Figure 1: Example image, rat cerebellum](fig/rat_cerebellum.jpg){#ratCerebellum}
+![Figure 1: Example image, rat cerebellum](fig/rat_cerebellum.png){#ratCerebellum}
 
 ## Work Through Example
 
@@ -85,7 +85,7 @@ use_virtualenv("r-env")
 ```{python}
 from matplotlib.image import imread
 
-img = imread('fig/axon_slice.jpg')
+img = imread('fig/axon_slice.png')
 
 ```
 
@@ -254,7 +254,7 @@ Often we want to work with colour images. So far, our image had a single intensi
 </p>
 
 ```{python}
-img_col = imread('fig/rat_brain_low_res.jpg')
+img_col = imread('fig/rat_brain_low_res.png')
 
 img_col.shape
 
@@ -331,7 +331,7 @@ Sometimes (or quite often, depending on the field of research), we have to deal 
 </p>
 
 ```{python, results = 'hold'}
-img_hr = imread('fig/rat_brain.jpg')
+img_hr = imread('fig/rat_brain.png')
 img_hr.shape
 ```
 
@@ -354,7 +354,7 @@ Let's try again. Be patient, it might take a moment.
 
 
 ```{python}
-img_hr = imread('fig/rat_brain.jpg')
+img_hr = imread('fig/rat_brain.png')
 img_hr.shape
 
 ```
@@ -377,7 +377,7 @@ Although now we can plot this image, it consists of over 300 million pixels, and
 We use `resize` to downsample the image:
 
 ```{python, results = 'hold'}
-img_pil = Image.open('fig/rat_brain.jpg')
+img_pil = Image.open('fig/rat_brain.png')
 img_small = img_pil.resize((174, 187))
 
 print(type(img_small))
@@ -581,7 +581,7 @@ Using the image from the the beginning of this lesson, "rat_cerebellum.jpg", do 
 ## Import the image
 from matplotlib.image import imread
 
-img_task = imread('fig/rat_cerebellum.jpg')
+img_task = imread('fig/rat_cerebellum.png')
 ```
 
 ```{python, results='hide', collapse=TRUE}

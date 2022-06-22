@@ -19,4 +19,4 @@ sudo curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.
 
 sudo apt-get install git-lfs
 
-git lfs instal
+git lfs install
