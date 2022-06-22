@@ -2,3 +2,9 @@ episodes/fig/rat_brain_low_res.jpg filter=lfs diff=lfs merge=lfs -text
 episodes/fig/rat_cerebellum.jpg filter=lfs diff=lfs merge=lfs -text
 episodes/fig/axon_slice.jpg filter=lfs diff=lfs merge=lfs -text
 episodes/fig/rat_brain.jpg filter=lfs diff=lfs merge=lfs -text
+episodes/fig/rat_brain_low_res.png filter=lfs diff=lfs merge=lfs -text
+episodes/fig/rat_cerebellum.png filter=lfs diff=lfs merge=lfs -text
+episodes/fig/subfolder_data.png filter=lfs diff=lfs merge=lfs -text
+episodes/fig/axon_slice.png filter=lfs diff=lfs merge=lfs -text
+episodes/fig/diabetes_data_screenshot.png filter=lfs diff=lfs merge=lfs -text
+episodes/fig/rat_brain.png filter=lfs diff=lfs merge=lfs -text
