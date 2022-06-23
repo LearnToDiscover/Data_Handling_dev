@@ -14,3 +14,5 @@ sudo apt update -y
 sudo apt install -y texlive-latex-base texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra
 
 
+mkdir -p site/docs/
+echo "fig/rat_brain.*" > site/docs/.gitignore
