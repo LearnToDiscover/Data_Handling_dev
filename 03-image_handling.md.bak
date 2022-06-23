@@ -10,30 +10,38 @@ exercises: 60
 
 [<span style="color: rgb(255, 0, 0);">**Mandatory Lesson Feedback Survey**</span>](https://docs.google.com/forms/d/e/1FAIpQLSdr0capF7jloJhPH3Pki1B3LZoKOG16poOpuVJ7SL2LkwLHQA/viewform?pli=1)
 
+:::::::::::::::::::::::::::::::::::::: questions 
 
 - How to read and process images in Python?
 - How is an image mask created?
 - What are colour channels in images?
 - Why dealing with big images is tricky?
+::::::::::::::::::::::::::::::::::::::::::::::::
 
+::::::::::::::::::::::::::::::::::::: objectives
 
 - Understanding 2-dimensional greyscale images.
 - Learning image masking.
 - 2-dimensional colour images, colour channels
 - Decreasing memory load
+::::::::::::::::::::::::::::::::::::::::::::::::
 
 
+:::::::::::::::::: prereq 
 
 ## Prerequisites
 - Numpy arrays
 - Plots and subplots with matplotlib
+::::::::::::::::::
 
+:::::::::::::::::: callout
 
 ## Exercises
 <p style='text-align: justify;'>
 This lesson has no explicit exercises. At each step, use images of your own choice to practice. There are many image file formats, different colour schemes etc for which you can try to find similar or analogous solutions.
 </p>
 
+:::::::::::::::::: 
 
 ## Challenge
 
@@ -668,6 +676,7 @@ show()
 Now, we can see all three viewing planes for this 3-dimensional brain scan!
 
 ## Exercises
+:::::::::::::::::::::::::::::::::::::::: challenge
 
 #### End of chapter Exercises
 
@@ -686,6 +695,7 @@ Using the image from the the beginning of this lesson, "rat_cerebellum.jpg", do 
 
 6. Change the resolution of your image to different values. How does the resolution affect your results?
 
+::::::::::::::::::::: solution
 
 ## Please check these solutions only after submitting the assignments.
 
@@ -818,12 +828,16 @@ Detailed traceback:
 ```
 [ad libitum]
 ```
+:::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::
 
 
-
+::::::::::::::::::::::::::::::::::::: keypoints 
 
 - `imread` function can interpret many different image formats.
 - Masking isolates pixels whose intensity value is below a certain threshold.
 - The colour images are comprised of three channels (corresponding to red, green and blue intensities).
 - Python Image Library (PIL) helps to set high pixel limit for larger images.
 
+::::::::::::::::::::::::::::::::::::::::::::::::

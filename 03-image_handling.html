@@ -158,13 +158,9 @@
         
     <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
-        <ul><li><a href="#prerequisites">Prerequisites</a></li>
-<li><a href="#exercises">Exercises</a></li>
-<li><a href="#challenge">Challenge</a></li>
+        <ul><li><a href="#challenge">Challenge</a></li>
 <li><a href="#work-through-example">Work Through Example</a></li>
 <li><a href="#exercises-1">Exercises</a></li>
-<li><a href="#please-check-these-solutions-only-after-submitting-the-assignments.">Please check these solutions only after submitting the
-assignments.</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
         
@@ -213,7 +209,7 @@ assignments.</a></li>
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Image Handling</h1>
-        <p> Last updated on 2022-06-23 | <a href="https://github.com/carpentries/workbench-template-rmd/edit/main/episodes/03-image_handling.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+        <p> Last updated on 2022-06-24 | <a href="https://github.com/carpentries/workbench-template-rmd/edit/main/episodes/03-image_handling.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
@@ -226,25 +222,62 @@ pdf</strong></a></p>
 (ipynb)</strong></a></p>
 <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSdr0capF7jloJhPH3Pki1B3LZoKOG16poOpuVJ7SL2LkwLHQA/viewform?pli=1" class="external-link"><span style="color: rgb(255, 0, 0);"><strong>Mandatory Lesson Feedback
 Survey</strong></span></a></p>
-<ul><li><p>How to read and process images in Python?</p></li>
-<li><p>How is an image mask created?</p></li>
-<li><p>What are colour channels in images?</p></li>
-<li><p>Why dealing with big images is tricky?</p></li>
-<li><p>Understanding 2-dimensional greyscale images.</p></li>
-<li><p>Learning image masking.</p></li>
-<li><p>2-dimensional colour images, colour channels</p></li>
-<li><p>Decreasing memory load</p></li>
-</ul><section id="prerequisites"><h2 class="section-heading">Prerequisites</h2>
-<hr class="half-width"><ul><li>Numpy arrays</li>
+<div class="overview card">
+<h2 class="card-header">Overview</h2>
+<div class="row g-0">
+<div class="col-md-4">
+<div class="card-body">
+<div class="inner">
+<h3 class="card-title">Questions</h3>
+<ul><li>How to read and process images in Python?</li>
+<li>How is an image mask created?</li>
+<li>What are colour channels in images?</li>
+<li>Why dealing with big images is tricky?</li>
+</ul></div>
+</div>
+</div>
+<div class="col-md-8">
+<div class="card-body">
+<div class="inner bordered">
+<h3 class="card-title">Objectives</h3>
+<ul><li>Understanding 2-dimensional greyscale images.</li>
+<li>Learning image masking.</li>
+<li>2-dimensional colour images, colour channels</li>
+<li>Decreasing memory load</li>
+</ul></div>
+</div>
+</div>
+</div>
+</div>
+<div id="prereq1" class="callout prereq">
+<div class="callout-square">
+<i class="callout-icon" data-feather="check"></i>
+</div>
+<div id="prerequisites" class="callout-inner">
+<h3 class="callout-title">Prerequisites</h3>
+<div class="callout-content">
+<ul><li>Numpy arrays</li>
 <li>Plots and subplots with matplotlib</li>
-</ul></section><section id="exercises"><h2 class="section-heading">Exercises</h2>
-<hr class="half-width"><p style="text-align: justify;">
+</ul></div>
+</div>
+</div>
+<div id="callout1" class="callout callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<div id="exercises" class="callout-inner">
+<h3 class="callout-title">Exercises</h3>
+<div class="callout-content">
+<p style="text-align: justify;">
 This lesson has no explicit exercises. At each step, use images of your
 own choice to practice. There are many image file formats, different
 colour schemes etc for which you can try to find similar or analogous
 solutions.
 </p>
-</section><section id="challenge"><h2 class="section-heading">Challenge</h2>
+</div>
+</div>
+</div>
+<section id="challenge"><h2 class="section-heading">Challenge</h2>
 <hr class="half-width"><div class="section level3">
 <h3 id="reading-and-processing-images"><strong>Reading and Processing Images</strong><a class="anchor" aria-label="anchor" href="#reading-and-processing-images"></a></h3>
 <p style="text-align: justify;">
@@ -948,8 +981,13 @@ resolution.</p>
 scan!</p>
 </div>
 </section><section id="exercises-1"><h2 class="section-heading">Exercises</h2>
-<hr class="half-width"><div class="section level4">
-<h4 id="end-of-chapter-exercises">End of chapter Exercises<a class="anchor" aria-label="anchor" href="#end-of-chapter-exercises"></a></h4>
+<hr class="half-width"><div id="challenge1" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<div id="end-of-chapter-exercises" class="callout-inner">
+<h3 class="callout-title">End of chapter Exercises</h3>
+<div class="callout-content">
 <p><strong>Assignment</strong> Using the image from the the beginning of
 this lesson, “rat_cerebellum.jpg”, do the following tasks:</p>
 <ol style="list-style-type: decimal"><li><p>Import the image and display it.</p></li>
@@ -970,9 +1008,18 @@ values change your results?</p></li>
 <li><p>Change the resolution of your image to different values. How does
 the resolution affect your results?</p></li>
 </ol></div>
-</section><section id="please-check-these-solutions-only-after-submitting-the-assignments."><h2 class="section-heading">Please check these solutions only after submitting the
-assignments.</h2>
-<hr class="half-width"><div class="section level3">
+</div>
+</div>
+<div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
+  <h4 class="accordion-header" id="headingSolution1">
+  Please check these solutions only after submitting the assignments.
+  </h4>
+</button>
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div class="accordion-body">
+<div class="section level3">
 <h3 id="q1">Q1<a class="anchor" aria-label="anchor" href="#q1"></a></h3>
 <div class="codewrapper sourceCode" id="cb47">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1095,6 +1142,18 @@ assignments.</h2>
 <div class="section level3">
 <h3 id="q6">Q6<a class="anchor" aria-label="anchor" href="#q6"></a></h3>
 <pre><code>[ad libitum]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="keypoints1" class="callout keypoints">
+<div class="callout-square">
+<i class="callout-icon" data-feather="key"></i>
+</div>
+<div class="callout-inner">
+<h3 class="callout-title">Keypoints</h3>
+<div class="callout-content">
 <ul><li>
 <code>imread</code> function can interpret many different image
 formats.</li>
@@ -1104,10 +1163,13 @@ threshold.</li>
 red, green and blue intensities).</li>
 <li>Python Image Library (PIL) helps to set high pixel limit for larger
 images.</li>
-</ul><!-- 
+</ul></div>
+</div>
+</div>
+<!-- 
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
- --></div>
+ -->
 </section></div> <!-- / div.lesson-content -->
     </main><!-- / main#main-content.main-content --><nav class="bottom-pagination mx-md-4" aria-label="Previous and Next Chapter"><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link" href="02-data_frames_2.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
@@ -1155,8 +1217,8 @@ any links that you are not going to use.
   "url": "https://carpentries.github.io/workbench-template-rmd/03-image_handling.html",
   "identifier": "https://carpentries.github.io/workbench-template-rmd/03-image_handling.html",
   "dateCreated": "2022-06-14",
-  "dateModified": "2022-06-23",
-  "datePublished": "2022-06-23"
+  "dateModified": "2022-06-24",
+  "datePublished": "2022-06-24"
 }
 
   </script><script>

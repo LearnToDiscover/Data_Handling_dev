@@ -10,6 +10,7 @@ exercises: 60
 
 [<span style="color: rgb(255, 0, 0);">**Mandatory Lesson Feedback Survey**</span>](https://docs.google.com/forms/d/e/1FAIpQLSdr0capF7jloJhPH3Pki1B3LZoKOG16poOpuVJ7SL2LkwLHQA/viewform?pli=1)
 
+::::::::::::::::::::::::::::::::::::: questions 
 
 - What is bivariate or multivariate analysis?
 - How are bivariate properties of data interpreted?
@@ -17,13 +18,16 @@ exercises: 60
 - When to use the correlation matrix?
 - What are the ways to study relationships in data?
 
+::::::::::::::::::::::::::::::::::::::::::::::::
 
+::::::::::::::::::::::::::::::::::::: objectives
 
 - Practise working with Pandas dataframes and Numpy arrays.
 - Bivariate analysis of Pandas dataframe / Numpy array.
 - The Pearson correlation coefficient ($PCC$).
 - Correlation Matrix as an example of bivariate summary statistics.
 
+::::::::::::::::::::::::::::::::::::::::::::::::
 
 <br>
 <p align = "center">
@@ -36,11 +40,13 @@ exercises: 60
 </p>
 <br>
 
+:::::::::::::::::: prereq 
 
 ## Prerequisites
 - Python Arrays
 - Basic Statistics, in particular the [correlation coefficient](https://en.wikipedia.org/wiki/Pearson_correlation_coefficient)
 - Pandas dataframes: import and handling
+::::::::::::::::::
 
 
 The following cell contains functions that need to be imported, please execute it before continuing with the Introduction.
@@ -64,6 +70,7 @@ from matplotlib.pyplot import subplots, show
 from numpy import corrcoef, fill_diagonal, triu_indices, arange
 ```
 
+:::::::::::::::::: callout
 
 ## Note
 
@@ -80,6 +87,7 @@ import pandas as pd
 
 We don't recommend this as the import of the whole library uses a lot of working memory (e.g. on the order of 100 MB for Numpy). 
 
+::::::::::::::::::
 
 ## Introduction
 
@@ -92,6 +100,7 @@ Quantities that are based on data from two variables are referred to as __bivari
 
 When we combine uni- and multivariate analysis we can get an excellent overview of basic properties of a dataset.
 
+:::::::::::::::::::::::::::::::::::: discussion
 
 ### **Example: The diabetes data set**
 
@@ -153,6 +162,7 @@ In contrast, column 4 versus 5 (centre) shows an elliptic, pointed shape along t
 In this lesson we aim to get an overview of the similarities in a data set. We first introduce bivariate visualisation using Matplotlib. Then we use Numpy functions to calculate correlation coefficients and the correlation matrix as an introduction to multivariate analysis. Combined with the basic statistics obtained in the previous lesson we can get a good overview of a high-dimensional data set before applying machine learning algorithms.
 </p>
 
+::::::::::::::::::::::::::::::::::::
 
 ## Work Through: Properties of a Data Set
 
@@ -223,6 +233,7 @@ dtype: object
 Out of the seven columns, three containing integers, three containing floating point (decimal) numbers, and the last one containing gender specification as 'female' or 'male'. We note that the sixth column contains a binary classification. Numerical analysis can thus be restricted to columns with indices 0 to 4.
 </p>
 
+:::::::::::::::::::::::: challenge
 
 ## __DIY1: Univariate properties of the patients data__
 1. Get the basic statistical properties of first five columns from the 'describe' function.  
@@ -232,6 +243,7 @@ Out of the seven columns, three containing integers, three containing floating p
 3. **Optional:** In the bar chart of the means, try to add the standard deviation as an errorbar, using the keyword argument `yerr` in the form 'yerr = df_describe.loc['std']'.
 
 
+::::::::::::::::: solution
 	
 ## Q1
 
@@ -253,7 +265,9 @@ min     25.00   60.00  111.00    109.00      68.00
 max     50.00   72.00  202.00    138.00      99.00
 ```
 
+:::::::::::::::::
 
+::::::::::::::::: solution
 	
 ## Q2
 
@@ -266,7 +280,9 @@ show()
 
 <img src="fig/02-data_frames_2-rendered-unnamed-chunk-7-3.png" width="672" style="display: block; margin: auto;" />
 
+:::::::::::::::::
 
+::::::::::::::::: solution
 	
 ## Q3
 
@@ -282,7 +298,9 @@ show()
 
 <img src="fig/02-data_frames_2-rendered-unnamed-chunk-8-5.png" width="672" style="display: block; margin: auto;" />
 
+:::::::::::::::::
 
+::::::::::::::::::::::::
 
 ### **Visual Search for Similarity: the Scatter Plot**
 
@@ -311,6 +329,7 @@ The data points appear to be grouped into two clouds. We will not deal with this
 However, from the plot one might also suspect that there is a trend of heavier people being taller. For instance, we note that there are no points in the lower right corner of the plot (weight >160 pounds and height < 65 inches). 
 </p>
 
+:::::::::::::::::::::::: challenge
 
 ## __DIY2: Scatter plot from the patients data__
 <p style='text-align: justify;'>
@@ -320,6 +339,7 @@ Create a scatter plot of the systolic via the diastolic blood pressure. Do the t
 Scatter plots are useful for the inspection of select pairs of data. However, they are only qualitative and thus, in general, it is preferred to have a numerical quantity.
 </p>
 
+::::::::::::::::: solution
 
 ```python
 fig, ax = subplots();
@@ -336,7 +356,9 @@ show()
 From the plot one might suspect that a larger systolic value is connected with a larger diastolic value. However, the plot in itself is not conclusive in that respect.
 </p>
 
+:::::::::::::::::
 
+::::::::::::::::::::::::
 
 ## The Correlation Coefficient
 <p style='text-align: justify;'>
@@ -384,6 +406,7 @@ The result as a matrix of two-by-two numbers. Along the diagonal (top left and b
 The non-diagonal elements show that the $CC \approx-0.26$ for the two data sets. Both $CC(12)$ and $CC(21)$ are given in the matrix but because of the symmetry we would only need to report one of the two. 
 </p>
 
+:::::::::::::::::::::::::: discussion
 
 ## Note
 <p style='text-align: justify;'>
@@ -393,6 +416,7 @@ Note that in this lesson we introduce how to calculate the $PCC$ but do not disc
 One quantitative way to assess whether or not a given value of the $PCC$ is meaningful or not is to use surrogate data. In our case, we could e.g. create random numbers in an array with shape (18, 2) such that the two means and standard deviations are the same as in the Everley data but the two columns are independent of each other. Creating many realisations, we can check what distribution of $PCC$ values is expected from the randomly generated data and compare this with the values from the Everleys data.
 </p>
 
+::::::::::::::::::::::::::
 
 <p style='text-align: justify;'>
 A lot of what we are going to do in the machine learning sessions will involve Numpy arrays. Let us therefore convert the Everleys data from a Pandas dataframe into a Numpy array.
@@ -481,6 +505,7 @@ print(cov_matrix)
 The result shows how the covariance is strongly dependent on the actual numerical values in a data column. The two values along the diagonal are identical with the variances obtained by squaring the standard deviation (calculated for example using the `describe` function).
 </p>
 
+:::::::::::::::::::::::: challenge
 
 ## __DIY3: Correlations from the patients data__
 
@@ -490,6 +515,7 @@ i) the Pandas dataframe and
 
 ii) the data as Numpy array. 
 
+::::::::::::::::: solution
 ## Q1
 
 ```python
@@ -504,7 +530,9 @@ Systolic   1.000000   0.511843
 Diastolic  0.511843   1.000000
 ```
 
+:::::::::::::::::
 
+::::::::::::::::: solution
 ## Q2
 
 ```python
@@ -523,6 +551,8 @@ Correlation coefficient between Systole and Diastole: 0.51
 It is worth noting that it is equally possible to calculate the correlation between rows of a two-dimension array (i.e. rowvar=True) but the interpretation will differ. Imagine a dataset where for two subjects a large number, call it $N$, of metabolites were determined quantitatively (a Metabolomics dataset).  If that dataset is of shape (2, N) then one can calculate the correlation between the two rows. This would be done to determine the correlation of the metabolite profiles between the two subjects.
 </p>
 
+:::::::::::::::::
+::::::::::::::::::::::::
 
 ## The Correlation Matrix
 <p style='text-align: justify;'>
@@ -652,6 +682,7 @@ show()
 The result is that the correlation between columns 'Height' and 'Weight' is the strongest and presumably higher than could be expected if these two measures were independent. We can confirm this by plotting a scatter plot for these two columns and compare to the scatter plot for (original) columns 2 (Height) and 5 (Diastolic blood pressure):
 </p>
 
+:::::::::::::::::::::::: challenge
 
 ## __DIY4: Spearman Correlations from the patients data__
 <p style='text-align: justify;'>
@@ -669,6 +700,7 @@ You can then apply it in the form:
 data_spearman_corr = spearmanr(data).correlation
 ```
 
+::::::::::::::::: solution
 
 ```python
 from scipy.stats import spearmanr
@@ -705,7 +737,9 @@ show()
 <img src="fig/02-data_frames_2-rendered-unnamed-chunk-24-15.png" width="672" style="display: block; margin: auto;" />
 
 
+:::::::::::::::::
 
+::::::::::::::::::::::::
 
 ## Analysis of the Correlation matrix
 
@@ -922,6 +956,7 @@ Average Correlation Strength:  0.29
 ```
 
 ## Exercises
+:::::::::::::::::::::::::::::::::::::::: challenge
 
 #### End of chapter Exercises
 
@@ -943,6 +978,7 @@ Import the breast cancer data set using `read_csv`. Based on the code of this le
 
 In case of doubt, try to get help from the respective documentations for Pandas dataframes, Numpy and Matplotlib.
 
+::::::::::::::::::::: solution
 
 ## Please check these solutions only after submitting the assignments.
 
@@ -1077,8 +1113,11 @@ print('Average Correlation Strength: ', round(bc_corr_matrix_average, 3))
 ```{.output}
 Average Correlation Strength:  0.387
 ```
+:::::::::::::::::::::
 
+::::::::::::::::::::::::::::::::::::::::
 
+::::::::::::::::::::::::::::::::::::: keypoints 
 
 - Quantities based on data from two variables are referred as bivariate measures. 
 - Bivariate properties can be studied using `matplotlib` and `numpy`. 
@@ -1087,5 +1126,6 @@ Average Correlation Strength:  0.387
 - A correlation matrix is visualised as a heatmap.
 
 
+::::::::::::::::::::::::::::::::::::::::::::::::
 
 [r-markdown]: https://rmarkdown.rstudio.com/
