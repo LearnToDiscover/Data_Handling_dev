@@ -16,3 +16,6 @@ sudo apt install -y texlive-latex-base texlive-fonts-recommended texlive-fonts-e
 
 mkdir -p site/docs/
 echo "fig/rat_brain.*" > site/docs/.gitignore
+
+mkdir -p site/built/
+echo "fig/rat_brain.*" > site/built/.gitignore
