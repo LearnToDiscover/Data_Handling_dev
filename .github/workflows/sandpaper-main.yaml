@@ -38,6 +38,9 @@ jobs:
       - name: "Check out LFS objects"
         run: git lfs pull
 
+      - name: "Check whether the files have been downloaded"
+        run: git status; ls -lha episodes/fig/
+
       - name: "Set up Python"
         uses: actions/setup-python@v2
         with:
