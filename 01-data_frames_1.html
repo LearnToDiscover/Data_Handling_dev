@@ -221,12 +221,9 @@
 
         
 
-<p><a href="01-data_frames_1.md.pdf"><strong>Download Chapter
-pdf</strong></a></p>
-<p><a href="01-data_frames_1.ipynb"><strong>Download Chapter notebook
-(ipynb)</strong></a></p>
-<p><a href="https://docs.google.com/forms/d/e/1FAIpQLSdr0capF7jloJhPH3Pki1B3LZoKOG16poOpuVJ7SL2LkwLHQA/viewform?pli=1" class="external-link"><span style="color: rgb(255, 0, 0);"><strong>Mandatory Lesson Feedback
-Survey</strong></span></a></p>
+<p><a href="01-data_frames_1.md.pdf"><strong>Download Chapter pdf</strong></a></p>
+<p><a href="01-data_frames_1.ipynb"><strong>Download Chapter notebook (ipynb)</strong></a></p>
+<p><a href="https://docs.google.com/forms/d/e/1FAIpQLSdr0capF7jloJhPH3Pki1B3LZoKOG16poOpuVJ7SL2LkwLHQA/viewform?pli=1" class="external-link"><span style="color: rgb(255, 0, 0);"><strong>Mandatory Lesson Feedback Survey</strong></span></a></p>
 <div class="overview card">
 <h2 class="card-header">Overview</h2>
 <div class="row g-0">
@@ -277,25 +274,17 @@ Survey</strong></span></a></p>
 <div class="callout-content">
 <ul><li>Indexing of Arrays</li>
 <li>For Loop through Array</li>
-<li>Basic Statistics (distributions, mean, median, standard
-deviation)</li>
+<li>Basic Statistics (distributions, mean, median, standard deviation)</li>
 </ul></div>
 </div>
 </div>
 
 <section id="challenge-the-diabetes-data-set"><h2 class="section-heading">Challenge: The diabetes data set</h2>
 <hr class="half-width"><p style="text-align: justify;">
-Here is a screenshot of the so-called diabetes data set. It is taken
-from <a href="https://www4.stat.ncsu.edu/~boos/var.select/diabetes.tab.txt" class="external-link">this
-webpage</a> and it is one of the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_diabetes.html" class="external-link">example
-data sets</a> used to illustrate machine learning functionality in
-scikit-learn (Part III and Part IV of the course).
+Here is a screenshot of the so-called diabetes data set. It is taken from <a href="https://www4.stat.ncsu.edu/~boos/var.select/diabetes.tab.txt" class="external-link">this webpage</a> and it is one of the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_diabetes.html" class="external-link">example data sets</a> used to illustrate machine learning functionality in scikit-learn (Part III and Part IV of the course).
 </p>
 <figure><img src="fig/diabetes_data_screenshot.png" title="Screenshot of Diabetes Data" class="figure mx-auto d-block"></figure><p style="text-align: justify;">
-This figure captures only the top part of the data. On the webpage you
-need to scroll down considerably to view the whole content. Thus, to get
-an <strong>overview</strong> of the dataset is the first main task in
-Data Science.
+This figure captures only the top part of the data. On the webpage you need to scroll down considerably to view the whole content. Thus, to get an <strong>overview</strong> of the dataset is the first main task in Data Science.
 </p>
 <div id="callout1" class="callout callout">
 <div class="callout-square">
@@ -305,10 +294,8 @@ Data Science.
 <h3 class="callout-title">The lesson</h3>
 <div class="callout-content">
 <ul><li>introduces code to read and inspect the data</li>
-<li>works with a specific data frame and extracts some techniques to get
-an overview</li>
-<li>discusses the concept ‘distribution’ as a way of summarising data in
-a single figure</li>
+<li>works with a specific data frame and extracts some techniques to get an overview</li>
+<li>discusses the concept ‘distribution’ as a way of summarising data in a single figure</li>
 </ul><div id="checklist1" class="callout checklist">
 <div class="callout-square">
 <i class="callout-icon" data-feather="check-square"></i>
@@ -323,9 +310,7 @@ a single figure</li>
 </div>
 </div>
 <p style="text-align: justify;">
-In this lesson we will only look at univariate features where each data
-column is studied independently of the others. Further properties and
-bivariate features will be the topic of the next lesson.
+In this lesson we will only look at univariate features where each data column is studied independently of the others. Further properties and bivariate features will be the topic of the next lesson.
 </p>
 </div>
 </div>
@@ -339,33 +324,17 @@ bivariate features will be the topic of the next lesson.
 <h3 class="callout-title">Reading data into a Pandas DataFrame</h3>
 <div class="callout-content">
 <p style="text-align: justify;">
-The small practice data file for this section is called
-‘everleys_data.csv’ and can be downloaded using the link given above in
-“Materials for this Lesson”. To start, please create a subfolder called
-‘data’ in the current directory and put the data file in it. It can now
-be accessed using the relative path <code>data/everleys_data.csv</code>
-or <code>data\everleys_data.csv</code>, respectively.
+The small practice data file for this section is called ‘everleys_data.csv’ and can be downloaded using the link given above in “Materials for this Lesson”. To start, please create a subfolder called ‘data’ in the current directory and put the data file in it. It can now be accessed using the relative path <code>data/everleys_data.csv</code> or <code>data\everleys_data.csv</code>, respectively.
 </p>
 <p style="text-align: justify;">
-The file <code>everleys_data.csv</code> contains blood concentrations of
-calcium and sodium ions from 17 patients with Everley’s syndrome. The
-data are taken from a <a href="https://www.bmj.com/about-bmj/resources-readers/publications/statistics-square-one/7-t-tests" class="external-link">BMJ
-statistics tutorial</a>. The data are stored as comma-separated values
-(csv), two values for each patient.
+The file <code>everleys_data.csv</code> contains blood concentrations of calcium and sodium ions from 17 patients with Everley’s syndrome. The data are taken from a <a href="https://www.bmj.com/about-bmj/resources-readers/publications/statistics-square-one/7-t-tests" class="external-link">BMJ statistics tutorial</a>. The data are stored as comma-separated values (csv), two values for each patient.
 </p>
 <p style="text-align: justify;">
-To get to know a dataset, we will use the Pandas package and the
-Matplotlib plotting library. The Pandas package for data science is
-included in the Anaconda distribution of Python. Check this <a href="https://pandas.pydata.org/getting_started.html" class="external-link">link for
-installation instructions</a> to get started.
+To get to know a dataset, we will use the Pandas package and the Matplotlib plotting library. The Pandas package for data science is included in the Anaconda distribution of Python. Check this <a href="https://pandas.pydata.org/getting_started.html" class="external-link">link for installation instructions</a> to get started.
 </p>
-<p>If you are not using the Anaconda distribution, please refer to <a href="https://pandas.pydata.org/docs/getting_started/install.html" class="external-link">these
-guidelines</a>.</p>
+<p>If you are not using the Anaconda distribution, please refer to <a href="https://pandas.pydata.org/docs/getting_started/install.html" class="external-link">these guidelines</a>.</p>
 <p style="text-align: justify;">
-To use the functions contained in Pandas they need to be imported. Our
-dataset is in ‘.csv’ format, and we therefore need to read it from a csv
-file. For this, we import the function <code>read_csv</code>. This
-function will create a <em>Pandas dataframe</em>.
+To use the functions contained in Pandas they need to be imported. Our dataset is in ‘.csv’ format, and we therefore need to read it from a csv file. For this, we import the function <code>read_csv</code>. This function will create a <em>Pandas dataframe</em>.
 </p>
 </div>
 </div>
@@ -376,11 +345,7 @@ function will create a <em>Pandas dataframe</em>.
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pandas <span class="im">import</span> read_csv</span></code></pre>
 </div>
 <p style="text-align: justify;">
-Executing this code does not lead to any output on the screen. However,
-the function is now ready to be used. To use it, we type its name and
-provide the required arguments. The following code should import the
-Everley’s data into your JupyterLab notebook (or other Python
-environment):
+Executing this code does not lead to any output on the screen. However, the function is now ready to be used. To use it, we type its name and provide the required arguments. The following code should import the Everley’s data into your JupyterLab notebook (or other Python environment):
 </p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -399,21 +364,11 @@ environment):
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># df = read_csv("data\everleys_data.csv") </span></span></code></pre>
 </div>
 <p style="text-align: justify;">
-This code uses the <code>read_csv</code> function from Pandas to read
-data from a data file, in this case a file with extension ‘.csv’. Note
-that the location of the data file is specified within quotes by the
-relative path to the subfolder ‘data’ followed by the file name. Use the
-JupyterLab file browser to check that subfolder exists and has the file
-in it.
+This code uses the <code>read_csv</code> function from Pandas to read data from a data file, in this case a file with extension ‘.csv’. Note that the location of the data file is specified within quotes by the relative path to the subfolder ‘data’ followed by the file name. Use the JupyterLab file browser to check that subfolder exists and has the file in it.
 </p>
-<figure><img src="fig/subfolder_data.png" title="Screenshot of subfolder 'data'" class="figure mx-auto d-block"></figure><p>After execution of the code, the data are contained in a variable
-called <code>df</code>. This is a structure referred to as a Pandas
-<em>DataFrame</em>.</p>
+<figure><img src="fig/subfolder_data.png" title="Screenshot of subfolder 'data'" class="figure mx-auto d-block"></figure><p>After execution of the code, the data are contained in a variable called <code>df</code>. This is a structure referred to as a Pandas <em>DataFrame</em>.</p>
 <blockquote>
-<p>A <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/dsintro.html#dataframe" class="external-link"><strong>Pandas
-dataframe</strong></a> is a 2-dimensional labeled data structure with
-columns of potentially different types. You can think of it as a
-spreadsheet.</p>
+<p>A <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/dsintro.html#dataframe" class="external-link"><strong>Pandas dataframe</strong></a> is a 2-dimensional labeled data structure with columns of potentially different types. You can think of it as a spreadsheet.</p>
 </blockquote>
 <p>To see the contents of <code>df</code>, simply use:</p>
 <div class="codewrapper sourceCode" id="cb4">
@@ -444,22 +399,14 @@ spreadsheet.</p>
 16  3.272809  117.588040
 17  3.917591  101.009870</code></pre>
 </div>
-<p>(Compare with the result of <code>print(df)</code> which displays the
-contents in a different format.)</p>
+<p>(Compare with the result of <code>print(df)</code> which displays the contents in a different format.)</p>
 <p style="text-align: justify;">
-The output shows in the first column an index, integers from 0 to 17;
-and the calcium and sodium concentrations in columns 2 and 3,
-respectively. The default indexing starts from zero (Python is a
-‘zero-based’ programming language).
+The output shows in the first column an index, integers from 0 to 17; and the calcium and sodium concentrations in columns 2 and 3, respectively. The default indexing starts from zero (Python is a ‘zero-based’ programming language).
 </p>
 <p style="text-align: justify;">
-In a dataframe, the first column is referred to as <em>Indices</em>, the
-first row is referred to as <em>Labels</em>. Note that the row with the
-labels is excluded from the row count. Similarly, the row with the
-indices is excluded from the column count.
+In a dataframe, the first column is referred to as <em>Indices</em>, the first row is referred to as <em>Labels</em>. Note that the row with the labels is excluded from the row count. Similarly, the row with the indices is excluded from the column count.
 </p>
-<p>For large data sets, the function <code>head</code> is a convenient
-way to get a feel of the dataset.</p>
+<p>For large data sets, the function <code>head</code> is a convenient way to get a feel of the dataset.</p>
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -476,13 +423,10 @@ way to get a feel of the dataset.</p>
 4  5.426060   97.931489</code></pre>
 </div>
 <p style="text-align: justify;">
-Without any input argument, this displays the first five data lines of
-the dataframe. You can specify alter the number of rows displayed by
-including a single integer as argument, e.g. <code>head(10)</code>.
+Without any input argument, this displays the first five data lines of the dataframe. You can specify alter the number of rows displayed by including a single integer as argument, e.g. <code>head(10)</code>.
 </p>
 <p style="text-align: justify;">
-If you feel there are too many decimal places in the default view, you
-can restrict their number by using the <code>round</code> function:
+If you feel there are too many decimal places in the default view, you can restrict their number by using the <code>round</code> function:
 </p>
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -500,9 +444,7 @@ can restrict their number by using the <code>round</code> function:
 4     5.43   97.93</code></pre>
 </div>
 <p style="text-align: justify;">
-While we can see how many rows there are in a dataframe when we display
-the whole data frame and look at the last index, there is a convenient
-way to obtain the number directly:
+While we can see how many rows there are in a dataframe when we display the whole data frame and look at the last index, there is a convenient way to obtain the number directly:
 </p>
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -516,8 +458,7 @@ way to obtain the number directly:
 </h3>
 <pre class="output" tabindex="0"><code>Data frame has 18 rows</code></pre>
 </div>
-<p>You could see above, that the columns of the dataframe have labels.
-To see all labels:</p>
+<p>You could see above, that the columns of the dataframe have labels. To see all labels:</p>
 <div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -544,9 +485,7 @@ To see all labels:</p>
 <pre class="output" tabindex="0"><code>Data frame has 2 columns</code></pre>
 </div>
 <p style="text-align: justify;">
-And if you want to have both the number of the rows and the columns
-together, use <code>shape</code>. Shape returns a tuple of two numbers,
-first the number of rows, then the number of columns.
+And if you want to have both the number of the rows and the columns together, use <code>shape</code>. Shape returns a tuple of two numbers, first the number of rows, then the number of columns.
 </p>
 <div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -560,12 +499,8 @@ first the number of rows, then the number of columns.
 </h3>
 <pre class="output" tabindex="0"><code>Data frame has 18 rows and 2 columns</code></pre>
 </div>
-<p>Notice that <code>shape</code> (like <code>columns</code>) is not
-followed by round parenthesis. It is not a function that can take
-arguments. Technically, <code>shape</code> is a ‘property’ of the
-dataframe.</p>
-<p>To find out what data type is contained in each of the columns, us
-<code>dtypes</code>, another ‘property’:</p>
+<p>Notice that <code>shape</code> (like <code>columns</code>) is not followed by round parenthesis. It is not a function that can take arguments. Technically, <code>shape</code> is a ‘property’ of the dataframe.</p>
+<p>To find out what data type is contained in each of the columns, us <code>dtypes</code>, another ‘property’:</p>
 <div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -578,8 +513,7 @@ dataframe.</p>
 sodium     float64
 dtype: object</code></pre>
 </div>
-<p>In this case, both columns contain floating point (decimal)
-numbers.</p>
+<p>In this case, both columns contain floating point (decimal) numbers.</p>
 <div id="challenge1" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
@@ -588,22 +522,13 @@ numbers.</p>
 <h3 class="callout-title">DIY1: Read data into a dataframe</h3>
 <div class="callout-content">
 <p style="text-align: justify;">
-Download the data file ‘loan_data.csv’ using the link given above in
-“Materials for this Lesson”. It contains data that can be used for the
-assessment of loan applications. Read the data into a DataFrame. It is
-best to assign it a name other than ‘df’ (to avoid overwriting the
-Evereley data set).
+Download the data file ‘loan_data.csv’ using the link given above in “Materials for this Lesson”. It contains data that can be used for the assessment of loan applications. Read the data into a DataFrame. It is best to assign it a name other than ‘df’ (to avoid overwriting the Evereley data set).
 </p>
 <p style="text-align: justify;">
-Display the first ten rows of the Loan data set to see its contents. It
-is taken from a <a href="https://www.analyticsvidhya.com/blog/2016/01/complete-tutorial-learn-data-science-python-scratch-2/" class="external-link">tutorial
-on Data Handling in Python</a> which you might find useful for further
-practice.
+Display the first ten rows of the Loan data set to see its contents. It is taken from a <a href="https://www.analyticsvidhya.com/blog/2016/01/complete-tutorial-learn-data-science-python-scratch-2/" class="external-link">tutorial on Data Handling in Python</a> which you might find useful for further practice.
 </p>
 <blockquote>
-<p>From this exercise we can see that a dataframe can contain different
-types of data: real numbers (e.g. LoanAmount), integers
-(ApplicantIncome), categorical data (Gender), and strings (Loan_ID).</p>
+<p>From this exercise we can see that a dataframe can contain different types of data: real numbers (e.g. LoanAmount), integers (ApplicantIncome), categorical data (Gender), and strings (Loan_ID).</p>
 </blockquote>
 </div>
 </div>
@@ -649,11 +574,7 @@ types of data: real numbers (e.g. LoanAmount), integers
 </div>
 </section><section id="accessing-data-in-a-dataframe"><h2 class="section-heading">Accessing data in a DataFrame</h2>
 <hr class="half-width"><p style="text-align: justify;">
-If a datafile is large and you only want to check the format of data in
-a specific column, you can limit the display to that column. To access
-data contained in a specific column of a dataframe, we can use a similar
-convention as in a Python dictionary, treating the column names as
-‘keys’. E.g. to show all rows in column ‘Calcium’, use:
+If a datafile is large and you only want to check the format of data in a specific column, you can limit the display to that column. To access data contained in a specific column of a dataframe, we can use a similar convention as in a Python dictionary, treating the column names as ‘keys’. E.g. to show all rows in column ‘Calcium’, use:
 </p>
 <div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -683,8 +604,7 @@ convention as in a Python dictionary, treating the column names as
 17    3.917591
 Name: calcium, dtype: float64</code></pre>
 </div>
-<p>To access individual rows of a column we use two pairs of square
-brackets:</p>
+<p>To access individual rows of a column we use two pairs of square brackets:</p>
 <div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -699,17 +619,10 @@ brackets:</p>
 Name: calcium, dtype: float64</code></pre>
 </div>
 <p style="text-align: justify;">
-Here all rules for <a href="https://docs.python.org/3/tutorial/introduction.html" class="external-link">slicing</a>
-can be applied. As for lists and tuples, the indexing of rows is
-semi-inclusive, lower boundary included, upper boundary excluded. Note
-that the first pair of square brackets refers to a column and the second
-pair refers to the rows. This is different from e.g. accessing items in
-a nested list.
+Here all rules for <a href="https://docs.python.org/3/tutorial/introduction.html" class="external-link">slicing</a> can be applied. As for lists and tuples, the indexing of rows is semi-inclusive, lower boundary included, upper boundary excluded. Note that the first pair of square brackets refers to a column and the second pair refers to the rows. This is different from e.g. accessing items in a nested list.
 </p>
-<p>Accessing items in a Pandas dataframe is analogous to accessing the
-values in a Python dictionary by referring to its keys.</p>
-<p>To access non-contiguous elements, we use an additional pair of
-square brackets (as if for a list within a list):</p>
+<p>Accessing items in a Pandas dataframe is analogous to accessing the values in a Python dictionary by referring to its keys.</p>
+<p>To access non-contiguous elements, we use an additional pair of square brackets (as if for a list within a list):</p>
 <div class="codewrapper sourceCode" id="cb26">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -724,11 +637,7 @@ square brackets (as if for a list within a list):</p>
 Name: calcium, dtype: float64</code></pre>
 </div>
 <p style="text-align: justify;">
-Another possibility to index and slice a dataframe is the use of the
-‘index location’ or <code>iloc</code> property. It refers first to rows
-and then to columns by index, all within a single pair of brackets. For
-example, to get all rows of the first column (index <code>0</code>), you
-use:
+Another possibility to index and slice a dataframe is the use of the ‘index location’ or <code>iloc</code> property. It refers first to rows and then to columns by index, all within a single pair of brackets. For example, to get all rows of the first column (index <code>0</code>), you use:
 </p>
 <div class="codewrapper sourceCode" id="cb28">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -758,8 +667,7 @@ use:
 17    3.917591
 Name: calcium, dtype: float64</code></pre>
 </div>
-<p>To display only the first three calcium concentrations, you use
-slicing, remembering that the upper bound is excluded):</p>
+<p>To display only the first three calcium concentrations, you use slicing, remembering that the upper bound is excluded):</p>
 <div class="codewrapper sourceCode" id="cb30">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -773,8 +681,7 @@ slicing, remembering that the upper bound is excluded):</p>
 2    2.789910
 Name: calcium, dtype: float64</code></pre>
 </div>
-<p>To access non-consecutive values, we can use a pair of square
-brackets within the pair of square brackets:</p>
+<p>To access non-consecutive values, we can use a pair of square brackets within the pair of square brackets:</p>
 <div class="codewrapper sourceCode" id="cb32">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -802,8 +709,7 @@ Name: calcium, dtype: float64</code></pre>
 4  5.42606   97.931489
 7  3.57132  112.647360</code></pre>
 </div>
-<p>To pick only the even rows from the two columns, check this colon
-notation:</p>
+<p>To pick only the even rows from the two columns, check this colon notation:</p>
 <div class="codewrapper sourceCode" id="cb36">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -831,8 +737,7 @@ notation:</p>
 <div id="diy2-select-data-from-dataframe" class="callout-inner">
 <h3 class="callout-title">DIY2: Select data from dataframe</h3>
 <div class="callout-content">
-<p>Display the calcium and sodium concentrations of all patients except
-the first. Check the model solution at the bottom for options.</p>
+<p>Display the calcium and sodium concentrations of all patients except the first. Check the model solution at the bottom for options.</p>
 </div>
 </div>
 </div>
@@ -876,13 +781,10 @@ the first. Check the model solution at the bottom for options.</p>
 </div>
 </div>
 </div>
-<p>Mixing the ways to access specific data in a dataframe can be
-confusing and needs practice.</p>
+<p>Mixing the ways to access specific data in a dataframe can be confusing and needs practice.</p>
 <div class="section level3">
 <h3 id="search-for-missing-values"><strong>Search for missing values</strong><a class="anchor" aria-label="anchor" href="#search-for-missing-values"></a></h3>
-<p>Some tables contain missing entries. You can check a dataframe for
-such missing entries. If no missing entry is found, the function
-<code>isnull</code> will return <code>False</code>.</p>
+<p>Some tables contain missing entries. You can check a dataframe for such missing entries. If no missing entry is found, the function <code>isnull</code> will return <code>False</code>.</p>
 <div class="codewrapper sourceCode" id="cb40">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -903,11 +805,8 @@ dtype: bool</code></pre>
 <div id="diy3-find-nan-in-dataframe" class="callout-inner">
 <h3 class="callout-title">DIY3: Find NaN in dataframe</h3>
 <div class="callout-content">
-<p>In the Loan data set, check the entry ‘Self-employed’ for ID
-LP001059. It shows how a missing value is represented as ‘NaN’ (not a
-number).</p>
-<p>Verify that the output of <code>isnull</code> in this case is
-<code>True</code></p>
+<p>In the Loan data set, check the entry ‘Self-employed’ for ID LP001059. It shows how a missing value is represented as ‘NaN’ (not a number).</p>
+<p>Verify that the output of <code>isnull</code> in this case is <code>True</code></p>
 </div>
 </div>
 </div>
@@ -949,8 +848,7 @@ Name: Self_Employed, dtype: bool</code></pre>
 </section><section id="basic-data-features"><h2 class="section-heading">Basic data features</h2>
 <hr class="half-width"><div class="section level3">
 <h3 id="summary-statistics"><strong>Summary Statistics</strong><a class="anchor" aria-label="anchor" href="#summary-statistics"></a></h3>
-<p>To get a summary of basic data features use the function
-<code>describe</code>:</p>
+<p>To get a summary of basic data features use the function <code>describe</code>:</p>
 <div class="codewrapper sourceCode" id="cb46">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -972,14 +870,7 @@ min     0.715811   97.931489
 max     5.652390  134.052390</code></pre>
 </div>
 <p style="text-align: justify;">
-The <code>describe</code> function produces a new dataframe (here called
-‘description’) that contains the number of samples, the mean, the
-standard deviation, minimum, 25th, 50th, 75th percentile, and the
-maximum value for each column of the data. Note that the indices of the
-rows have now been replaced by strings. To access rows, it is possible
-to refer to those names using the <code>loc</code> property. E.g. to
-access the mean of the calcium concentrations from the description, each
-of the following is valid:
+The <code>describe</code> function produces a new dataframe (here called ‘description’) that contains the number of samples, the mean, the standard deviation, minimum, 25th, 50th, 75th percentile, and the maximum value for each column of the data. Note that the indices of the rows have now been replaced by strings. To access rows, it is possible to refer to those names using the <code>loc</code> property. E.g. to access the mean of the calcium concentrations from the description, each of the following is valid:
 </p>
 <div class="codewrapper sourceCode" id="cb48">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1012,11 +903,7 @@ of the following is valid:
 <h3 class="callout-title">DIY4: Practice</h3>
 <div class="callout-content">
 <p style="text-align: justify;">
-Use your own .csv data set to practice. (If you don’t have a data set at
-hand, any excel table can be exported as .csv.) Read it into a
-dataframe, check its header, access individual values or sets of values.
-Create a statistics using <code>describe</code> and check for missing
-values using <code>.isnull</code>.
+Use your own .csv data set to practice. (If you don’t have a data set at hand, any excel table can be exported as .csv.) Read it into a dataframe, check its header, access individual values or sets of values. Create a statistics using <code>describe</code> and check for missing values using <code>.isnull</code>.
 </p>
 </div>
 </div>
@@ -1038,10 +925,8 @@ values using <code>.isnull</code>.
 </div>
 <div class="section level3">
 <h3 id="iterating-through-the-columns"><strong>Iterating through the columns</strong><a class="anchor" aria-label="anchor" href="#iterating-through-the-columns"></a></h3>
-<p>Now we know how to access all data in a dataframe and how to get a
-summary statistics over each column.</p>
-<p>Here is code to iterate through the columns and access the first two
-concentrations:</p>
+<p>Now we know how to access all data in a dataframe and how to get a summary statistics over each column.</p>
+<p>Here is code to iterate through the columns and access the first two concentrations:</p>
 <div class="codewrapper sourceCode" id="cb50">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1059,8 +944,7 @@ Name: calcium, dtype: float64
 1    125.66333
 Name: sodium, dtype: float64</code></pre>
 </div>
-<p>As a slightly more complex example, we access the median (‘50%’) of
-each column in the description and add it to a list:</p>
+<p>As a slightly more complex example, we access the median (‘50%’) of each column in the description and add it to a list:</p>
 <div class="codewrapper sourceCode" id="cb52">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1080,31 +964,19 @@ each column in the description and add it to a list:</p>
 The medians are:  [3.3641954, 115.122615]</code></pre>
 </div>
 <p style="text-align: justify;">
-This approach is useful for data frames with a large number of columns.
-For instance, it is possible to then create a boxplot or histogram for
-the means, medians etc. of the dataframe and thus to get an overview of
-all (comparable) columns.
+This approach is useful for data frames with a large number of columns. For instance, it is possible to then create a boxplot or histogram for the means, medians etc. of the dataframe and thus to get an overview of all (comparable) columns.
 </p>
 </div>
 <div class="section level3">
 <h3 id="selecting-a-subset-based-on-a-template"><strong>Selecting a subset based on a template</strong><a class="anchor" aria-label="anchor" href="#selecting-a-subset-based-on-a-template"></a></h3>
 <p style="text-align: justify;">
-An analysis of a data set may need to be done on part of the data. This
-can often be formulated by using a logical condition which specifies the
-required subset.
+An analysis of a data set may need to be done on part of the data. This can often be formulated by using a logical condition which specifies the required subset.
 </p>
 <p style="text-align: justify;">
-For this we will assume that some of the data are labelled ‘0’ and some
-are labelled ‘1’. Let us therefore see how to add a new column to our
-Evereleys data frame which contains the (in this case arbitrary) labels.
+For this we will assume that some of the data are labelled ‘0’ and some are labelled ‘1’. Let us therefore see how to add a new column to our Evereleys data frame which contains the (in this case arbitrary) labels.
 </p>
 <p style="text-align: justify;">
-First we randomly create as many labels as we have rows in the data
-frame. We can use the <code>randint</code> function which we import from
-‘numpy.random’. <code>randint</code> in its simple form takes two
-arguments. First the upper bound of the integer needed, where by default
-it starts from zero. As Python is exclusive on the upper bound,
-providing ‘2’ will thus yield either ‘0’ or ‘1’ only.
+First we randomly create as many labels as we have rows in the data frame. We can use the <code>randint</code> function which we import from ‘numpy.random’. <code>randint</code> in its simple form takes two arguments. First the upper bound of the integer needed, where by default it starts from zero. As Python is exclusive on the upper bound, providing ‘2’ will thus yield either ‘0’ or ‘1’ only.
 </p>
 <div class="codewrapper sourceCode" id="cb54">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1124,20 +996,13 @@ providing ‘2’ will thus yield either ‘0’ or ‘1’ only.
 </h3>
 <pre class="output" tabindex="0"><code>Number of rows:   18
 Number of Labels: 18
-Labels:           [0 0 1 0 0 1 1 1 0 1 1 0 1 1 0 0 0 0]</code></pre>
+Labels:           [1 1 0 1 1 1 0 0 0 1 1 1 1 0 1 1 1 1]</code></pre>
 </div>
-<p>Note how we obtain the number of rows (18) using <code>len</code> and
-do not put it directly into the code.</p>
+<p>Note how we obtain the number of rows (18) using <code>len</code> and do not put it directly into the code.</p>
 <p style="text-align: justify;">
-Now we create a new data column in our <code>df</code> dataframe which
-contains the labels. To create a new column, you can simply refer to a
-column name that does not yet exist and assign values to it. Let us call
-it ‘gender’, assuming that ‘0’ represents male and ‘1’ represents
-female.
+Now we create a new data column in our <code>df</code> dataframe which contains the labels. To create a new column, you can simply refer to a column name that does not yet exist and assign values to it. Let us call it ‘gender’, assuming that ‘0’ represents male and ‘1’ represents female.
 </p>
-<p>As gender specification can include more than two labels, try to
-create a column with more than two randomly assigned labels e.g. (0, 1,
-2).</p>
+<p>As gender specification can include more than two labels, try to create a column with more than two randomly assigned labels e.g. (0, 1, 2).</p>
 <div class="codewrapper sourceCode" id="cb56">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1149,16 +1014,14 @@ create a column with more than two randomly assigned labels e.g. (0, 1,
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="output" tabindex="0"><code>    calcium      sodium  gender
-0  3.455582  112.690980       0
-1  3.669026  125.663330       0
-2  2.789910  105.821810       1
-3  2.939900   98.172772       0
-4  5.426060   97.931489       0</code></pre>
+0  3.455582  112.690980       1
+1  3.669026  125.663330       1
+2  2.789910  105.821810       0
+3  2.939900   98.172772       1
+4  5.426060   97.931489       1</code></pre>
 </div>
 <p style="text-align: justify;">
-Now we can use the information contained in ‘gender’ to filter the data
-by gender. To achieve this, we use a conditional statement. Let us check
-which of the rows are labelled as ‘1’:
+Now we can use the information contained in ‘gender’ to filter the data by gender. To achieve this, we use a conditional statement. Let us check which of the rows are labelled as ‘1’:
 </p>
 <div class="codewrapper sourceCode" id="cb58">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1168,31 +1031,28 @@ which of the rows are labelled as ‘1’:
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>0     False
-1     False
-2      True
-3     False
-4     False
+<pre class="output" tabindex="0"><code>0      True
+1      True
+2     False
+3      True
+4      True
 5      True
-6      True
-7      True
+6     False
+7     False
 8     False
 9      True
 10     True
-11    False
+11     True
 12     True
-13     True
-14    False
-15    False
-16    False
-17    False
+13    False
+14     True
+15     True
+16     True
+17     True
 Name: gender, dtype: bool</code></pre>
 </div>
 <p style="text-align: justify;">
-If we assign the result of the conditional statement (Boolean True or
-False) to a variable, then this variable can act as a template to filter
-the data. If we call the data frame with that variable, we will only get
-the rows where the condition was found to be True:
+If we assign the result of the conditional statement (Boolean True or False) to a variable, then this variable can act as a template to filter the data. If we call the data frame with that variable, we will only get the rows where the condition was found to be True:
 </p>
 <div class="codewrapper sourceCode" id="cb60">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1204,18 +1064,22 @@ the rows where the condition was found to be True:
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>     calcium     sodium  gender
-2   2.789910  105.82181       1
-5   0.715811  120.85833       1
-6   5.652390  112.87150       1
-7   3.571320  112.64736       1
-9   1.369419  118.49901       1
-10  2.550962  117.37373       1
-12  3.664987  105.34641       1
-13  1.362779  123.35949       1</code></pre>
+<pre class="output" tabindex="0"><code>     calcium      sodium  gender
+0   3.455582  112.690980       1
+1   3.669026  125.663330       1
+3   2.939900   98.172772       1
+4   5.426060   97.931489       1
+5   0.715811  120.858330       1
+9   1.369419  118.499010       1
+10  2.550962  117.373730       1
+11  2.894129  134.052390       1
+12  3.664987  105.346410       1
+14  3.718798  125.021060       1
+15  1.865868  112.075420       1
+16  3.272809  117.588040       1
+17  3.917591  101.009870       1</code></pre>
 </div>
-<p>Using the Boolean, we only pick the rows that are labelled ‘1’ and
-thus get a subset of the data according to the label.</p>
+<p>Using the Boolean, we only pick the rows that are labelled ‘1’ and thus get a subset of the data according to the label.</p>
 <div id="challenge5" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
@@ -1223,8 +1087,7 @@ thus get a subset of the data according to the label.</p>
 <div id="diy5-using-a-template" class="callout-inner">
 <h3 class="callout-title">DIY5: Using a template</h3>
 <div class="callout-content">
-<p>Modify the code to calculate the number of samples labelled 0 and
-check the number of rows of that subset.</p>
+<p>Modify the code to calculate the number of samples labelled 0 and check the number of rows of that subset.</p>
 </div>
 </div>
 </div>
@@ -1251,7 +1114,7 @@ check the number of rows of that subset.</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>10 samples are labelled "male".</code></pre>
+<pre class="output" tabindex="0"><code>8 samples are labelled "male".</code></pre>
 </div>
 </div>
 </div>
@@ -1260,15 +1123,10 @@ check the number of rows of that subset.</p>
 </div>
 </section><section id="visualisation-of-data"><h2 class="section-heading">Visualisation of data</h2>
 <hr class="half-width"><p style="text-align: justify;">
-It is easy to see from the numbers that the concentrations of sodium are
-much higher than that of calcium. However, to also compare the medians,
-percentiles and the spread of the data it is better to use
-visualisation.
+It is easy to see from the numbers that the concentrations of sodium are much higher than that of calcium. However, to also compare the medians, percentiles and the spread of the data it is better to use visualisation.
 </p>
 <p style="text-align: justify;">
-The simplest way of visualisation is to use Pandas functionality which
-offers direct ways of plotting. Here is an example where a boxplot is
-created for each column:
+The simplest way of visualisation is to use Pandas functionality which offers direct ways of plotting. Here is an example where a boxplot is created for each column:
 </p>
 <div class="codewrapper sourceCode" id="cb64">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1277,10 +1135,7 @@ created for each column:
 <span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>df.boxplot()</span></code></pre>
 </div>
 <figure><img src="fig/01-data_frames_1-rendered-unnamed-chunk-34-1.png" width="672" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p style="text-align: justify;">
-By default, boxplots are shown for all columns if no further argument is
-given to the function (empty round parenthesis). As the calcium plot is
-rather squeezed we may wish to see it individually. This can be done by
-specifying the calcium column as an argument:
+By default, boxplots are shown for all columns if no further argument is given to the function (empty round parenthesis). As the calcium plot is rather squeezed we may wish to see it individually. This can be done by specifying the calcium column as an argument:
 </p>
 <div class="codewrapper sourceCode" id="cb65">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1290,39 +1145,25 @@ specifying the calcium column as an argument:
 </div>
 <figure><img src="fig/01-data_frames_1-rendered-unnamed-chunk-35-3.png" width="672" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure></section><section id="plots-using-matplotlib"><h2 class="section-heading">Plots using Matplotlib</h2>
 <hr class="half-width"><blockquote>
-<p><a href="https://matplotlib.org" class="external-link"><strong>Matplotlib</strong></a> is a
-comprehensive library for creating static, animated, and interactive
-visualizations in Python.</p>
+<p><a href="https://matplotlib.org" class="external-link"><strong>Matplotlib</strong></a> is a comprehensive library for creating static, animated, and interactive visualizations in Python.</p>
 </blockquote>
 <p style="text-align: justify;">
-The above is an easy way to create boxplots directly on the dataframe.
-It is based on the library Matplotlib and specifically uses the
-<strong>pyplot library</strong>. For simplicity, the code is put in a
-convenient Pandas function.
+The above is an easy way to create boxplots directly on the dataframe. It is based on the library Matplotlib and specifically uses the <strong>pyplot library</strong>. For simplicity, the code is put in a convenient Pandas function.
 </p>
 <p style="text-align: justify;">
-However, we are going to use <strong>Matplotlib</strong> extensively
-later on in the course, and we therefore now introduce the direct,
-generic way of using it.
+However, we are going to use <strong>Matplotlib</strong> extensively later on in the course, and we therefore now introduce the direct, generic way of using it.
 </p>
-<p>For this, we import the function <code>subplots</code> from the <a href="https://matplotlib.org/stable/api/pyplot_summary.html" class="external-link">pyplot
-library</a>:</p>
+<p>For this, we import the function <code>subplots</code> from the <a href="https://matplotlib.org/stable/api/pyplot_summary.html" class="external-link">pyplot library</a>:</p>
 <div class="codewrapper sourceCode" id="cb66">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib.pyplot <span class="im">import</span> subplots, show</span></code></pre>
 </div>
 <p style="text-align: justify;">
-The way to use <code>subplots</code> is to first set up a figure
-environment (below it is called ‘fig’) and an empty coordinate system
-(below called ‘ax’). The plot is then done using one of the many methods
-available in Matplotlib. We apply it to the coordinate system ‘ax’.
+The way to use <code>subplots</code> is to first set up a figure environment (below it is called ‘fig’) and an empty coordinate system (below called ‘ax’). The plot is then done using one of the many methods available in Matplotlib. We apply it to the coordinate system ‘ax’.
 </p>
 <p style="text-align: justify;">
-As an example, let us create a <a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.boxplot.html#matplotlib.pyplot.boxplot%7C" class="external-link">boxplot</a>
-of the calcium variable. As an argument of the function we need to
-specify the data. We can use the values of the ‘calcium’ concentrations
-from the column with that name:
+As an example, let us create a <a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.boxplot.html#matplotlib.pyplot.boxplot%7C" class="external-link">boxplot</a> of the calcium variable. As an argument of the function we need to specify the data. We can use the values of the ‘calcium’ concentrations from the column with that name:
 </p>
 <div class="codewrapper sourceCode" id="cb67">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1334,15 +1175,10 @@ from the column with that name:
 <span id="cb67-5"><a href="#cb67-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb67-6"><a href="#cb67-6" aria-hidden="true" tabindex="-1"></a>show()</span></code></pre>
 </div>
-<figure><img src="fig/01-data_frames_1-rendered-unnamed-chunk-37-5.png" width="672" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Note how following the actual plot we define the title of the plot by
-referring to the same coordinate system <code>ax</code>.</p>
-<p>The value of <code>subplots</code> becomes apparent when we try to
-create more than one plot in a single figure.</p>
+<figure><img src="fig/01-data_frames_1-rendered-unnamed-chunk-37-5.png" width="672" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Note how following the actual plot we define the title of the plot by referring to the same coordinate system <code>ax</code>.</p>
+<p>The value of <code>subplots</code> becomes apparent when we try to create more than one plot in a single figure.</p>
 <p style="text-align: justify;">
-Here is an example to create two boxplots next to each other. The
-keyword arguments to use is ‘ncols’ which is the number of figures per
-row. ‘ncols=2’ indicates that you want to have two plots next to each
-other.
+Here is an example to create two boxplots next to each other. The keyword arguments to use is ‘ncols’ which is the number of figures per row. ‘ncols=2’ indicates that you want to have two plots next to each other.
 </p>
 <div class="codewrapper sourceCode" id="cb68">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1357,11 +1193,8 @@ other.
 <span id="cb68-8"><a href="#cb68-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb68-9"><a href="#cb68-9" aria-hidden="true" tabindex="-1"></a>show()</span></code></pre>
 </div>
-<figure><img src="fig/01-data_frames_1-rendered-unnamed-chunk-38-7.png" width="672" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Note that you now have to refer to each of the subplots by indexing
-the coordinate system ‘ax’. This figure gives a good overview of the
-Everley’s data.</p>
-<p>If you prefer to have the boxplots of both columns in a single
-figure, that can also be done:</p>
+<figure><img src="fig/01-data_frames_1-rendered-unnamed-chunk-38-7.png" width="672" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Note that you now have to refer to each of the subplots by indexing the coordinate system ‘ax’. This figure gives a good overview of the Everley’s data.</p>
+<p>If you prefer to have the boxplots of both columns in a single figure, that can also be done:</p>
 <div class="codewrapper sourceCode" id="cb69">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1379,8 +1212,7 @@ figure, that can also be done:</p>
 <div id="diy6-boxplot-from-loan-data" class="callout-inner">
 <h3 class="callout-title">DIY6: Boxplot from Loan data</h3>
 <div class="callout-content">
-<p>Plot the boxplots of the ‘ApplicantIncome’ and the
-‘CoapplicantIncome’ in the Loan data using the above code.</p>
+<p>Plot the boxplots of the ‘ApplicantIncome’ and the ‘CoapplicantIncome’ in the Loan data using the above code.</p>
 </div>
 </div>
 </div>
@@ -1409,9 +1241,7 @@ figure, that can also be done:</p>
 <div class="section level3">
 <h3 id="histogram"><strong>Histogram</strong><a class="anchor" aria-label="anchor" href="#histogram"></a></h3>
 <p style="text-align: justify;">
-Another good overview is the histogram: Containers or ‘bins’ are created
-over the range of values found within a column and the count of the
-values for each bin is plotted on the vertical axis.
+Another good overview is the histogram: Containers or ‘bins’ are created over the range of values found within a column and the count of the values for each bin is plotted on the vertical axis.
 </p>
 <div class="codewrapper sourceCode" id="cb71">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1428,11 +1258,8 @@ values for each bin is plotted on the vertical axis.
 <span id="cb71-10"><a href="#cb71-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb71-11"><a href="#cb71-11" aria-hidden="true" tabindex="-1"></a>show()</span></code></pre>
 </div>
-<figure><img src="fig/01-data_frames_1-rendered-unnamed-chunk-41-13.png" width="672" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>This also shows how to add labels to the axes and a title to the
-overall figure.</p>
-<p>This uses the default value for the generation of the bins. It is set
-to 10 bins over the range of which values are found. The number of bins
-in the histogram can be changed using the keyword argument ‘bins’:</p>
+<figure><img src="fig/01-data_frames_1-rendered-unnamed-chunk-41-13.png" width="672" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>This also shows how to add labels to the axes and a title to the overall figure.</p>
+<p>This uses the default value for the generation of the bins. It is set to 10 bins over the range of which values are found. The number of bins in the histogram can be changed using the keyword argument ‘bins’:</p>
 <div class="codewrapper sourceCode" id="cb72">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1447,9 +1274,7 @@ in the histogram can be changed using the keyword argument ‘bins’:</p>
 <span id="cb72-9"><a href="#cb72-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb72-10"><a href="#cb72-10" aria-hidden="true" tabindex="-1"></a>show()</span></code></pre>
 </div>
-<figure><img src="fig/01-data_frames_1-rendered-unnamed-chunk-42-15.png" width="672" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Note how the y-label of the right figure is not placed well. To
-correct for the placement of the labels and the title, you can use
-<code>tight_layout</code> on the figure:</p>
+<figure><img src="fig/01-data_frames_1-rendered-unnamed-chunk-42-15.png" width="672" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Note how the y-label of the right figure is not placed well. To correct for the placement of the labels and the title, you can use <code>tight_layout</code> on the figure:</p>
 <div class="codewrapper sourceCode" id="cb73">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1472,9 +1297,7 @@ correct for the placement of the labels and the title, you can use
 <div id="diy7-create-the-histogram-of-a-column" class="callout-inner">
 <h3 class="callout-title">DIY7: Create the histogram of a column</h3>
 <div class="callout-content">
-<p>Take the loan data and display the histogram of the loan amount that
-people asked for. (Loan amounts are divided by 1000, i.e. in k£ on the
-horizontal axis). Use e.g. 20 bins.</p>
+<p>Take the loan data and display the histogram of the loan amount that people asked for. (Loan amounts are divided by 1000, i.e. in k£ on the horizontal axis). Use e.g. 20 bins.</p>
 </div>
 </div>
 </div>
@@ -1504,15 +1327,12 @@ horizontal axis). Use e.g. 20 bins.</p>
 </div>
 </div>
 </section><section id="handling-the-diabetes-data-set"><h2 class="section-heading">Handling the Diabetes Data Set</h2>
-<hr class="half-width"><p>We now return to the data set that started our enquiry into the
-handling of data in a dataframe.</p>
+<hr class="half-width"><p>We now return to the data set that started our enquiry into the handling of data in a dataframe.</p>
 <p>We will now:</p>
 <ul><li>Import the diabetes data from ‘sklearn’</li>
 <li>Check the shape of the dataframe and search for NANs</li>
-<li>Get a summary plot of one of its statistical quantities (e.g. mean)
-for all columns</li>
-</ul><p>First we import the data set and check its <code>head</code>. Wait
-until the numbers show below the code, it might take a while.</p>
+<li>Get a summary plot of one of its statistical quantities (e.g. mean) for all columns</li>
+</ul><p>First we import the data set and check its <code>head</code>. Wait until the numbers show below the code, it might take a while.</p>
 <div class="codewrapper sourceCode" id="cb75">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1532,16 +1352,15 @@ until the numbers show below the code, it might take a while.</p>
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="output" tabindex="0"><code>          0         1         2  ...         7         8         9
-0  0.038076  0.050680  0.061696  ... -0.002592  0.019908 -0.017646
-1 -0.001882 -0.044642 -0.051474  ... -0.039493 -0.068330 -0.092204
-2  0.085299  0.050680  0.044451  ... -0.002592  0.002864 -0.025930
-3 -0.089063 -0.044642 -0.011595  ...  0.034309  0.022692 -0.009362
-4  0.005383 -0.044642 -0.036385  ... -0.002592 -0.031991 -0.046641
+0  0.038076  0.050680  0.061696  ... -0.002592  0.019907 -0.017646
+1 -0.001882 -0.044642 -0.051474  ... -0.039493 -0.068332 -0.092204
+2  0.085299  0.050680  0.044451  ... -0.002592  0.002861 -0.025930
+3 -0.089063 -0.044642 -0.011595  ...  0.034309  0.022688 -0.009362
+4  0.005383 -0.044642 -0.036385  ... -0.002592 -0.031988 -0.046641
 
 [5 rows x 10 columns]</code></pre>
 </div>
-<p>If you don’t see all columns, use the cursor to scroll to the right.
-Now let’s check the number of columns and rows.</p>
+<p>If you don’t see all columns, use the cursor to scroll to the right. Now let’s check the number of columns and rows.</p>
 <div class="codewrapper sourceCode" id="cb77">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1556,9 +1375,7 @@ Now let’s check the number of columns and rows.</p>
 <pre class="output" tabindex="0"><code>Rows: 442 Columns: 10</code></pre>
 </div>
 <p>There are 442 rows organised in 10 columns.</p>
-<p>To get an overview, let us extract the mean of each column using
-‘describe’ and plot all means as a bar chart. The Matplotlib function to
-plot a bar chart is <code>bar</code>:</p>
+<p>To get an overview, let us extract the mean of each column using ‘describe’ and plot all means as a bar chart. The Matplotlib function to plot a bar chart is <code>bar</code>:</p>
 <div class="codewrapper sourceCode" id="cb79">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1574,7 +1391,7 @@ plot a bar chart is <code>bar</code>:</p>
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="output" tabindex="0"><code>The columns are:  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-The medians are:  [-3.6396225400041895e-16, 1.309912460049817e-16, -8.013951493363262e-16, 1.2898179256674614e-16, -9.042540472060098e-17, 1.3011211012575365e-16, -4.563971121592555e-16, 3.8631742350078977e-16, -3.848103334221131e-16, -3.39848812741592e-16] 2</code></pre>
+The medians are:  [-2.511816797794472e-19, 1.2307902309192911e-17, -2.2455642172282577e-16, -4.7975700837874414e-17, -1.3814992387869595e-17, 3.918434204559376e-17, -5.7771786349272854e-18, -9.042540472060099e-18, 9.293722151839546e-17, 1.1303175590075123e-17] 2</code></pre>
 </div>
 <div class="codewrapper sourceCode" id="cb81">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1588,14 +1405,9 @@ The medians are:  [-3.6396225400041895e-16, 1.309912460049817e-16, -8.0139514933
 <span id="cb81-7"><a href="#cb81-7" aria-hidden="true" tabindex="-1"></a>show()</span></code></pre>
 </div>
 <figure><img src="fig/01-data_frames_1-rendered-unnamed-chunk-48-21.png" width="672" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p style="text-align: justify;">
-The bars in this plot go up and down. Note, however, that the vertical
-axis has values ranging from -10<sup>(-16)</sup> to +10<sup>(-16)</sup>.
-This means that for all practical purposes all means are zero. This is
-not a coincidence. The original values have been normalised to zero mean
-for the purpose of applying some machine learning algorithm to them.
+The bars in this plot go up and down. Note, however, that the vertical axis has values ranging from -10<sup>(-16)</sup> to +10<sup>(-16)</sup>. This means that for all practical purposes all means are zero. This is not a coincidence. The original values have been normalised to zero mean for the purpose of applying some machine learning algorithm to them.
 </p>
-<p>In this example, we see how important it is to check the data before
-working with them.</p>
+<p>In this example, we see how important it is to check the data before working with them.</p>
 </section><section id="exercises"><h2 class="section-heading">Exercises</h2>
 <hr class="half-width"><div id="challenge8" class="callout challenge">
 <div class="callout-square">
@@ -1604,16 +1416,13 @@ working with them.</p>
 <div id="end-of-chapter-exercises" class="callout-inner">
 <h3 class="callout-title">End of chapter Exercises</h3>
 <div class="callout-content">
-<p>Download the cervical cancer data set provided, import it using
-<code>read_csv</code>.</p>
+<p>Download the cervical cancer data set provided, import it using <code>read_csv</code>.</p>
 <ol style="list-style-type: decimal"><li><p>How many rows and columns are there?</p></li>
-<li><p>How many columns contain floating point numbers
-(float64)?</p></li>
+<li><p>How many columns contain floating point numbers (float64)?</p></li>
 <li><p>How many of the subjects are smokers?</p></li>
 <li><p>Calculate the percentage of smokers</p></li>
 <li><p>Plot the age distribution (with e.g. 50 bins)</p></li>
-<li><p>Get the mean and standard distribution of age of first sexual
-intercourse</p></li>
+<li><p>Get the mean and standard distribution of age of first sexual intercourse</p></li>
 </ol></div>
 </div>
 </div>
@@ -1831,19 +1640,14 @@ Standard distribution of age of first sexual intercourse:  2.9</code></pre>
 <h3 class="callout-title">Keypoints</h3>
 <div class="callout-content">
 <ul><li>
-<code>Pandas</code> package contains useful functions to work with
-dataframes.</li>
+<code>Pandas</code> package contains useful functions to work with dataframes.</li>
 <li>
-<code>iloc</code> property is used to index and slice a
-dataframe.</li>
+<code>iloc</code> property is used to index and slice a dataframe.</li>
 <li>
-<code>describe</code> function is used to get a summary of basic
-data features.</li>
-<li>The simplest way of visualisation is to use Pandas
-functionality.</li>
+<code>describe</code> function is used to get a summary of basic data features.</li>
+<li>The simplest way of visualisation is to use Pandas functionality.</li>
 <li>
-<code>Matplotlib</code> is a comprehensive library for creating
-static, animated, and interactive visualizations in Python.</li>
+<code>Matplotlib</code> is a comprehensive library for creating static, animated, and interactive visualizations in Python.</li>
 </ul></div>
 </div>
 </div>
@@ -1876,7 +1680,7 @@ any links that you are not going to use.
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
         <p>Built with <a href="https://github.com/carpentries/sandpaper" class="external-link">sandpaper (0.5.1)</a>,
-      <a href="https://github.com/carpentries/pegboard" class="external-link">pegboard (0.2.4)</a>,
+      <a href="https://github.com/carpentries/pegboard" class="external-link">pegboard (0.3.0)</a>,
       and <a href="https://github.com/carpentries/varnish" class="external-link">varnish (0.1.4)</a>.</p>
 			</div>
 		</footer></div> <!-- / div.container -->
@@ -1897,7 +1701,7 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://carpentries.github.io/workbench-template-rmd/01-data_frames_1.html",
   "identifier": "https://carpentries.github.io/workbench-template-rmd/01-data_frames_1.html",
-  "dateCreated": "2022-06-14",
+  "dateCreated": "2022-06-23",
   "dateModified": "2022-06-23",
   "datePublished": "2022-06-23"
 }
