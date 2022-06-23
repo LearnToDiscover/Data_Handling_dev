@@ -36,7 +36,7 @@ jobs:
             lfs: 'true'
 
       - name: "Check out LFS objects"
-        run: git lfs checkout episodes/fig/*.png
+        run: git lfs checkout episodes/fig/*.jpg
 
       - name: "Set up Python"
         uses: actions/setup-python@v2
