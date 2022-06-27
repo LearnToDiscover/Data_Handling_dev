@@ -26,6 +26,21 @@ exercises: 60
 - Decreasing memory load
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
+<br>
+<p align = "center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Wn2GCHu-Glw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</p>
+<br>
+
+<p align = "center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/JVx2szMOZc8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</p>
+<br>
+
+<p align = "center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/xJsCInqgLz4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</p>
+<br>
 
 :::::::::::::::::: prereq 
 
