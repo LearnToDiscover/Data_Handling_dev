@@ -15,7 +15,7 @@ exercises: 60
 - How to read and process images in Python?
 - How is an image mask created?
 - What are colour channels in images?
-- Why dealing with big images is tricky?
+- How to deal with big images?
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::: objectives
@@ -51,7 +51,7 @@ In biology, we often deal with images, for example from microscopy and different
 </p>
 
 - Working with 2-dimensional greyscale images
-- Creating and appyling binary image masks
+- Creating and applying binary image masks
 - Working with 2-dimensional colour images, and interpreting colour channels
 - Decreasing the memory for further processing by reducing resolution or patching
 - Working with 3-dimensional images
@@ -72,7 +72,7 @@ We might want to, for example, determine the relative amounts of IP3R, DNA and s
 
 ### **Reading and Plotting a 2-dimensional Image**
 <p style='text-align: justify;'>
-First, we want to read in an image. For this part of the lesson, we use a histological slice through an axon bundle as an example. We use matplotlib's image module, from which we import `imread` to store the image in a variable called img. The function `imread` can interpret many different image formats, including jpg, png and tif images.
+First, we want to read in an image. For this part of the lesson, we use a histological slice through an axon bundle as an example. We use Matplotlib's image module, from which we import `imread` to store the image in a variable called img. The function `imread` can interpret many different image formats, including jpg, png and tif images.
 </p>
 
 ```{r setup, include=FALSE}
@@ -165,8 +165,8 @@ fig, ax = subplots(nrows=1, ncols=2, figsize=(25, 15))
 
 p1 = ax[0].imshow(img[:20, :15], cmap='viridis')
 p2 = ax[1].imshow(img[:20, :15], cmap='magma')
-fig.colorbar(p1, ax=ax[0])
-fig.colorbar(p2, ax=ax[1]);
+fig.colorbar(p1, ax=ax[0], shrink = 0.8)
+fig.colorbar(p2, ax=ax[1], shrink = 0.8);
 
 show()
 ```
@@ -245,7 +245,7 @@ show()
 ```
 
 <p style='text-align: justify;'>
-On the left we show all the values for the masked image. There is a large peak at zero, as a large part of the image is masked. On the right, we show only the noon-zero pizel intensities. We can see that our mask worked as expected, only values up to 125 are found. This is because our threshold causes a sharp cut-off at a pixel intensity of 125.
+On the left we show all the values for the masked image. There is a large peak at zero, as a large part of the image is masked. On the right, we show only the non-zero pixel intensities. We can see that our mask worked as expected, only values up to 125 are found. This is because our threshold causes a sharp cut-off at a pixel intensity of 125.
 </p>
 
 ### Colour Images
@@ -275,7 +275,7 @@ show()
 
 ```
 
-The sample is labeled for Hoescht stain (blue), the Inositol trisphosphate (IP3) receptor (green) and Glial fibrillary acidic protein (GFAP) (red).
+The sample is labeled for Hoechst stain (blue), the Inositol trisphosphate (IP3) receptor (green) and Glial fibrillary acidic protein (GFAP) (red).
 <p style='text-align: justify;'>
 Now we can visualise the three colour channels individually by slicing the Numpy array. The stack with index 0 corresponds to 'red', index 1 corresponds to 'green' and index 2 corresponds to 'blue':
 </p>
@@ -441,7 +441,7 @@ for index in range(patches.shape[0]):
 show()
 ```
 
-Now, working with these smaller, individual patches will be much more managable!
+Now, working with these smaller, individual patches will be much more manageable!
 
 ### **3D Images**
 
@@ -471,7 +471,7 @@ in your command line or terminal.
 import nibabel as nib
 ```
 
-The package is now available for use. If a function comes from that packege, we call it by referring to the package using `nib`, followed by a period and the name of the function:
+The package is now available for use. If a function comes from that package, we call it by referring to the package using `nib`, followed by a period and the name of the function:
 
 ```{python}
 img_3d = nib.load('fig/brain.nii')
@@ -507,7 +507,7 @@ These look fairly dark. We can improve the contrast, by adjusting the intensity 
 `vmin` and `vmax` define the data range that the colormap (in our case the 'grey' map) covers. By default, the colormap covers the complete value range of the supplied data. For an image that will be somewhere between 0 and 255. If we want to brighten up the darker shades of grey, we can reduce the value of `vmax`
 </p>
 
-Exanding the above code:
+Expanding the above code:
     
 ```{python, results='hide', collapse=TRUE}
 fig, ax = subplots(ncols=3, figsize=(25, 15))
@@ -557,7 +557,8 @@ Now, we can see all three viewing planes for this 3-dimensional brain scan!
 #### End of chapter Exercises
 
 **Assignment**
-Using the image from the the beginning of this lesson, "rat_cerebellum.jpg", do the following tasks:
+
+Using the image from the beginning of this lesson, "rat_cerebellum.jpg", do the following tasks:
 
 1. Import the image and display it.
 
@@ -567,7 +568,7 @@ Using the image from the the beginning of this lesson, "rat_cerebellum.jpg", do 
 
 4. Plot the three masks and the corresponding masked images.
 
-5. Using your masks, approximate the relative amounts of synaptophysin, IP3R, and DNA in the image. To do this, you can assume that the number of red pixels represents synaptophysin, green pixels represents IP3R and blue pixels represent DNA. The results will vary depending on the setting of the thresholds. How do different theshold values change your results?
+5. Using your masks, approximate the relative amounts of synaptophysin, IP3R, and DNA in the image. To do this, you can assume that the number of red pixels represents synaptophysin, green pixels represents IP3R and blue pixels represent DNA. The results will vary depending on the setting of the thresholds. How do different threshold values change your results?
 
 6. Change the resolution of your image to different values. How does the resolution affect your results?
 
@@ -587,7 +588,7 @@ img_task = imread('fig/rat_cerebellum.jpg')
 ```{python, results='hide', collapse=TRUE}
 ## Display the image
 
-from matplotlib.pyplot import subplots
+from matplotlib.pyplot import subplots, show
 
 fig, ax = subplots(figsize=(20, 10))
 
@@ -663,11 +664,12 @@ show()
 ### Q5
 
 ```{python, results='hide', collapse=TRUE}
+from numpy import sum as numpy_sum
 total_pixels = img_task.shape[0]*img_task.shape[1]
 
-red_counts   = sum(red_mask)
-green_counts = sum(green_mask)
-blue_counts  = sum(blue_mask)
+red_counts   = numpy_sum(red_mask)
+green_counts = numpy_sum(green_mask)
+blue_counts  = numpy_sum(blue_mask)
 print("Approximately %d"%(red_counts/total_pixels*100)+"% of the image is synaptophysin")
 print("Approximately %d"%(green_counts/total_pixels*100)+"% of the image is IP3R")
 print("Approximately %d"%(blue_counts/total_pixels*100)+"% of the image is DNA") 
