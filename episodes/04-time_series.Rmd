@@ -31,9 +31,9 @@ exercises: 60
 
 ## Prerequisites
 
-- Dataframes 1 and 2
-- Image Handling
-- Basics of Numpy Arrays
+- [Dataframes 1 and 2](01-data_frames_1.Rmd)
+- [Image Handling](03-image_handling.Rmd)
+- [Basics of Numpy Arrays]()
 
 ::::::::::::::::::
 

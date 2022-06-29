@@ -2,6 +2,8 @@
 
 pip install jupytext
 
+pip install nibabel
+
 mkdir -p ~/.virtualenvs/
 
 python3 -m venv ~/.virtualenvs/r-env
