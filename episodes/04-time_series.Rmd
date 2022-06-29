@@ -126,9 +126,11 @@ data_epil = d2[:period*sr:, :channels]
 <p style='text-align: justify;'>
 The `read_csv` function is used with the keyword argument `delim_whitespace`. When set to True, this allows to import data that are space-separated (rather than comma-separated). If you check the data .txt files, you will see that the numbers (which represent voltages) are indeed separated by space, not comma. 
 </p>
+
 <p style='text-align: justify;'>
 Next, three constants are assigned: The sampling rate, sr, which is given in number of samples recorded per seconds; the duration of the recording, period, which is given in seconds; and the number of columns, referred to as channels, to be extracted from the recording. We use the first 10 columns in this lesson.
 </p>
+
 The data are then converted from a data frame to Numpy arrays.
 
 To see the names of the channels (or recording sensors) we can use `head`. 
@@ -140,6 +142,7 @@ df_back.head()
 <p style='text-align: justify;'>
 The row indices and column names for the seizure data look the same. The names of the recording channels are from the commonly used [10-20 system](https://en.wikipedia.org/wiki/10–20_system_(EEG)) to record voltages of brain activity from the scalp in humans. E.g. 'F' stands for the frontal lobe.  
 </p>
+
 <p style='text-align: justify;'>
 We can now use the plot function from above to plot the data. Note from the definition (first line) that two input arguments are reqired: the data set and the sampling rate. 
 </p>
@@ -181,9 +184,11 @@ __Task__
 <p style='text-align: justify;'>
 Quantify features of these time series data to get an overview. As a univariate feature we can use the frequency content. This takes into account the fact that the rows (or samplles) are not independent of each other but are organised along the time axis. In consequence, there are correlations between data points along the rows of each column and the __Fourier spectrum__ can be used to identify these. 
 </p>
+
 <p style='text-align: justify;'>
 The Fourier spectrum assumes that the data are stationary and can be thought of as a superposition of regular sine waves with different frequencies. Its output will show which of the frequencies are present in the data and also their respective amplitudes. 
 </p>
+
 As a bivariate feature we can use the cross-correlation matrix.
 
 ## Work Through Example
@@ -278,6 +283,7 @@ A function usually (but not necessarily) takes in one or several variables or va
 <p style='text-align: justify;'>
 There are different ways to create functions in Python. In this course, we will be using `def` to implement our own functions. This is the easiest, and by far the most common method for declaring functions. The structure of a typical function defined using `def` can be see in the `plot_series` example:
 </p>
+
 There are several points to remember in relation to functions:
 
 - The name of a function follows same principles as that of any other variable. It must be in lower-case characters.
@@ -355,6 +361,7 @@ show()
 <p style='text-align: justify;'>
 The frequency range from 8 to 13 Hz is referred to as alpha band in the electroencephalogram. It is thought that this represents a kind of idling rhythm of the brain, i.e. an activity where the brain is not activily processing sensory input. 
 </p>
+
 :::::::::::::::::::::::::::::: challenge 
 
 ## __DIY1: Band-pass filtered data__
@@ -398,6 +405,7 @@ show()
 <p style='text-align: justify;'>
 The Fourier spectrum decomposes the time series into a sum of sine waves. The spectrum gives the coefficients of each of the sine wave components. The coefficients are directly related to the amplitudes needed to optimally fit the sum of all sine waves to recreate the original data. 
 </p>
+
 <p style='text-align: justify;'>
 However, the assumption behind the Fourier transform is that the data are provided as in infinitely long stationary time series. These assumptions are not fullfilled as the data are finite and stationarity of a biological system can typically not be guaranteed. Thus, interpretation needs to be cautious. 
 </p>
