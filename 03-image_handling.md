@@ -15,7 +15,7 @@ exercises: 60
 - How to read and process images in Python?
 - How is an image mask created?
 - What are colour channels in images?
-- Why dealing with big images is tricky?
+- How to deal with big images?
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::: objectives
@@ -26,6 +26,21 @@ exercises: 60
 - Decreasing memory load
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
+<br>
+<p align = "center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Wn2GCHu-Glw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</p>
+<br>
+
+<p align = "center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/JVx2szMOZc8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</p>
+<br>
+
+<p align = "center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/xJsCInqgLz4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</p>
+<br>
 
 :::::::::::::::::: prereq 
 
@@ -51,7 +66,7 @@ In biology, we often deal with images, for example from microscopy and different
 </p>
 
 - Working with 2-dimensional greyscale images
-- Creating and appyling binary image masks
+- Creating and applying binary image masks
 - Working with 2-dimensional colour images, and interpreting colour channels
 - Decreasing the memory for further processing by reducing resolution or patching
 - Working with 3-dimensional images
@@ -72,7 +87,7 @@ We might want to, for example, determine the relative amounts of IP3R, DNA and s
 
 ### **Reading and Plotting a 2-dimensional Image**
 <p style='text-align: justify;'>
-First, we want to read in an image. For this part of the lesson, we use a histological slice through an axon bundle as an example. We use matplotlib's image module, from which we import `imread` to store the image in a variable called img. The function `imread` can interpret many different image formats, including jpg, png and tif images.
+First, we want to read in an image. For this part of the lesson, we use a histological slice through an axon bundle as an example. We use Matplotlib's image module, from which we import `imread` to store the image in a variable called img. The function `imread` can interpret many different image formats, including jpg, png and tif images.
 </p>
 
 
@@ -80,19 +95,14 @@ First, we want to read in an image. For this part of the lesson, we use a histol
 
 ```python
 from matplotlib.image import imread
-
-img = imread('fig/axon_slice.jpg')
 ```
 
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): UnidentifiedImageError: cannot identify image file 'fig/axon_slice.jpg'
+```{.output}
+Matplotlib is building the font cache; this may take a moment.
+```
 
-Detailed traceback:
-  File "<string>", line 1, in <module>
-  File "/home/runner/.virtualenvs/r-env/lib/python3.10/site-packages/matplotlib/image.py", line 1560, in imread
-    with img_open(fname) as image:
-  File "/home/runner/.virtualenvs/r-env/lib/python3.10/site-packages/PIL/Image.py", line 3123, in open
-    raise UnidentifiedImageError(
+```python
+img = imread('fig/axon_slice.jpg')
 ```
 
 We can check what type of variable this is:
@@ -103,11 +113,8 @@ We can check what type of variable this is:
 print(type(img))
 ```
 
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'img' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
+```{.output}
+<class 'numpy.ndarray'>
 ```
 
 This tells us that the image is stored in a Numpy array. We can check some other properties of this array, for example, what the image dimensions are.
@@ -118,11 +125,8 @@ This tells us that the image is stored in a Numpy array. We can check some other
 print(img.shape)
 ```
 
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'img' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
+```{.output}
+(2300, 3040)
 ```
 
 <p style='text-align: justify;'>
@@ -136,16 +140,7 @@ from matplotlib.pyplot import subplots, show
 fig, ax = subplots(figsize=(25, 15))
 
 ax.imshow(img, cmap='gray');
-```
 
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'img' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```python
 show()
 ```
 
@@ -162,16 +157,7 @@ from matplotlib.pyplot import subplots, show
 fig, ax = subplots(figsize=(25, 15))
 
 ax.imshow(img[:50, :70], cmap='gray');
-```
 
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'img' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```python
 show()
 ```
 
@@ -186,16 +172,7 @@ With `img[:50, :70]` we select the first 50 values from the first dimension, and
 fig, ax = subplots(figsize=(25, 15))
 
 ax.imshow(img[:20, :15], cmap='gray');
-```
 
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'img' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```python
 show()
 ```
 
@@ -210,11 +187,27 @@ This is a small section from that same upper left corner. Each square is a pixel
 print(img[:20, :15])
 ```
 
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'img' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
+```{.output}
+[[ 18   9   3   4   4   1   2   7   6   8  10  12  13  14  13]
+ [ 14   7   3   4   4   2   2   6   6   7   9  11  12  12  12]
+ [  8   3   1   3   5   3   2   4   6   7   8   9  10  10   9]
+ [  2   0   0   2   4   4   3   2   6   6   7   8   8   8   8]
+ [  0   0   0   1   3   5   3   1   6   6   7   7   8   9  10]
+ [  0   0   0   0   2   6   5   0   7   7   7   8   9  11  13]
+ [  0   2   1   0   1   6   5   1   8   8   8  10  11  14  17]
+ [  1   3   2   0   0   6   6   1   9   9   9  10  13  16  19]
+ [  1   0   0   1   4   7   8   8  10  12  15  16  18  20  24]
+ [  1   1   1   2   4   7   8   8  14  16  19  22  24  28  33]
+ [  4   5   5   6   8  10  12  13  19  22  26  30  34  40  46]
+ [  9  11  12  13  14  16  18  21  24  27  32  36  42  49  57]
+ [ 12  15  17  18  19  21  25  28  32  34  38  43  49  57  65]
+ [ 14  17  21  23  24  26  32  36  43  45  47  51  56  63  72]
+ [ 18  23  28  31  31  35  41  47  56  57  58  60  64  70  78]
+ [ 24  29  35  38  39  42  50  56  65  65  66  67  69  75  82]
+ [ 32  39  40  44  51  48  52  69  77  82  83  80  81  89  94]
+ [ 35  43  46  51  58  55  58  74  80  85  88  85  87  94  98]
+ [ 38  50  56  61  69  66  67  80  85  90  94  95  97 102 105]
+ [ 41  56  64  70  78  76  75  84  90  95 100 104 106 109 111]]
 ```
 
 Each of these numbers corresponds to an intensity in the specified colourmap. These numbers range from 0 to 255, implying 256 shades of grey. 
@@ -228,25 +221,10 @@ We chose `cmap = gray`, which assigns darker grey colours to smaller numbers, an
 fig, ax = subplots(nrows=1, ncols=2, figsize=(25, 15))
 
 p1 = ax[0].imshow(img[:20, :15], cmap='viridis')
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'img' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
 p2 = ax[1].imshow(img[:20, :15], cmap='magma')
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'img' is not defined
+fig.colorbar(p1, ax=ax[0], shrink = 0.8)
+fig.colorbar(p2, ax=ax[1], shrink = 0.8);
 
-Detailed traceback:
-  File "<string>", line 1, in <module>
-fig.colorbar(p1, ax=ax[0])
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'p1' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-fig.colorbar(p2, ax=ax[1]);
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'p2' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
 show()
 ```
 
@@ -271,10 +249,6 @@ The histogram plot shows how many of each of the intensities are found in this i
 fig, ax = subplots(figsize=(10, 4))
 
 ax.hist(img.flatten(), bins = 50)
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'img' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
 ax.set_xlabel("Pixel intensity", fontsize=16);
 
 show()
@@ -296,28 +270,14 @@ Based on the histogram above, we might try to adjust that threshold somewhere be
 threshold = 125
 
 mask = img < threshold
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'img' is not defined
 
-Detailed traceback:
-  File "<string>", line 1, in <module>
 img_masked = img*mask
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'img' is not defined
 
-Detailed traceback:
-  File "<string>", line 1, in <module>
 fig, ax = subplots(nrows=1, ncols=2, figsize=(20, 10))
 
 ax[0].imshow(mask, cmap='gray')
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'mask' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
 ax[0].set_title('Binary mask', fontsize=16)
 ax[1].imshow(img_masked, cmap='gray')
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'img_masked' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
 ax[1].set_title('Masked image', fontsize=16)
 
 show()
@@ -339,18 +299,10 @@ Let's have a look at the resulting image histograms.
 fig, ax = subplots(nrows=1, ncols=2, figsize=(20, 5))
 
 ax[0].hist(img_masked.flatten(), bins=50)
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'img_masked' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
 ax[0].set_title('Histogram of masked image', fontsize=16)
 ax[0].set_xlabel("Pixel intensity", fontsize=16)
 
 ax[1].hist(img_masked[img_masked != 0].flatten(), bins=25)
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'img_masked' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
 ax[1].set_title('Histogram of masked image after zeros are removed', fontsize=16)
 ax[1].set_xlabel("Pixel intensity", fontsize=16)
 
@@ -360,7 +312,7 @@ show()
 <img src="fig/03-image_handling-rendered-unnamed-chunk-11-13.png" width="1920" style="display: block; margin: auto;" />
 
 <p style='text-align: justify;'>
-On the left we show all the values for the masked image. There is a large peak at zero, as a large part of the image is masked. On the right, we show only the noon-zero pizel intensities. We can see that our mask worked as expected, only values up to 125 are found. This is because our threshold causes a sharp cut-off at a pixel intensity of 125.
+On the left we show all the values for the masked image. There is a large peak at zero, as a large part of the image is masked. On the right, we show only the non-zero pixel intensities. We can see that our mask worked as expected, only values up to 125 are found. This is because our threshold causes a sharp cut-off at a pixel intensity of 125.
 </p>
 
 ### Colour Images
@@ -371,28 +323,12 @@ Often we want to work with colour images. So far, our image had a single intensi
 
 ```python
 img_col = imread('fig/rat_brain_low_res.jpg')
-```
 
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): UnidentifiedImageError: cannot identify image file 'fig/rat_brain_low_res.jpg'
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-  File "/home/runner/.virtualenvs/r-env/lib/python3.10/site-packages/matplotlib/image.py", line 1560, in imread
-    with img_open(fname) as image:
-  File "/home/runner/.virtualenvs/r-env/lib/python3.10/site-packages/PIL/Image.py", line 3123, in open
-    raise UnidentifiedImageError(
-```
-
-```python
 img_col.shape
 ```
 
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'img_col' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
+```{.output}
+(929, 1000, 3)
 ```
 
 <p style='text-align: justify;'>
@@ -406,22 +342,13 @@ First, let us plot the whole image.
 fig, ax = subplots(figsize=(25, 15))
 
 ax.imshow(img_col);
-```
 
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'img_col' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```python
 show()
 ```
 
 <img src="fig/03-image_handling-rendered-unnamed-chunk-13-15.png" width="2400" style="display: block; margin: auto;" />
 
-The sample is labeled for Hoescht stain (blue), the Inositol trisphosphate (IP3) receptor (green) and Glial fibrillary acidic protein (GFAP) (red).
+The sample is labeled for Hoechst stain (blue), the Inositol trisphosphate (IP3) receptor (green) and Glial fibrillary acidic protein (GFAP) (red).
 <p style='text-align: justify;'>
 Now we can visualise the three colour channels individually by slicing the Numpy array. The stack with index 0 corresponds to 'red', index 1 corresponds to 'green' and index 2 corresponds to 'blue':
 </p>
@@ -429,35 +356,8 @@ Now we can visualise the three colour channels individually by slicing the Numpy
 
 ```python
 red_channel   = img_col[:, :, 0]
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'img_col' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```python
 green_channel = img_col[:, :, 1]
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'img_col' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```python
 blue_channel  = img_col[:, :, 2]
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'img_col' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
 ```
 
 
@@ -466,35 +366,13 @@ Detailed traceback:
 fig, ax = subplots(nrows=1, ncols=3, figsize=(20, 10))
 
 imgplot_red = ax[0].imshow(red_channel, cmap="Reds")
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'red_channel' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
 imgplot_green = ax[1].imshow(green_channel, cmap="Greens")
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'green_channel' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
 imgplot_blue = ax[2].imshow(blue_channel, cmap="Blues")
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'blue_channel' is not defined
 
-Detailed traceback:
-  File "<string>", line 1, in <module>
 fig.colorbar(imgplot_red, ax=ax[0], shrink=0.4)
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'imgplot_red' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
 fig.colorbar(imgplot_green, ax=ax[1], shrink=0.4)
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'imgplot_green' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
 fig.colorbar(imgplot_blue, ax=ax[2], shrink=0.4);
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'imgplot_blue' is not defined
 
-Detailed traceback:
-  File "<string>", line 1, in <module>
 show()
 ```
 
@@ -511,24 +389,12 @@ We can plot histograms of each of the colour channels.
 fig, ax = subplots(nrows=1, ncols=3, figsize=(20, 5))
 
 ax[0].hist(red_channel.flatten(), bins=50)
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'red_channel' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
 ax[0].set_xlabel("Pixel intensity", fontsize=16)
 ax[0].set_xlabel("Red channel")
 ax[1].hist(green_channel.flatten(), bins=50)
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'green_channel' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
 ax[1].set_xlabel("Pixel intensity", fontsize=16)
 ax[1].set_xlabel("Green channel")
 ax[2].hist(blue_channel.flatten(), bins=50)
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'blue_channel' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
 ax[2].set_xlabel("Pixel intensity", fontsize=16)
 ax[2].set_xlabel("Blue channel")
 
@@ -699,7 +565,7 @@ show()
 
 <img src="fig/03-image_handling-rendered-unnamed-chunk-26-25.png" width="2400" style="display: block; margin: auto;" />
 
-Now, working with these smaller, individual patches will be much more managable!
+Now, working with these smaller, individual patches will be much more manageable!
 
 ### **3D Images**
 
@@ -739,7 +605,7 @@ Detailed traceback:
     module = _import(
 ```
 
-The package is now available for use. If a function comes from that packege, we call it by referring to the package using `nib`, followed by a period and the name of the function:
+The package is now available for use. If a function comes from that package, we call it by referring to the package using `nib`, followed by a period and the name of the function:
 
 
 ```python
@@ -810,15 +676,7 @@ Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'img_
 Detailed traceback:
   File "<string>", line 1, in <module>
 fig.colorbar(p1, ax=ax[0], shrink=0.4)
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'p1' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
 fig.colorbar(p2, ax=ax[1], shrink=0.4)
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'p2' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
 fig.colorbar(p3, ax=ax[2], shrink=0.4);
 Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'p3' is not defined
 
@@ -835,7 +693,7 @@ These look fairly dark. We can improve the contrast, by adjusting the intensity 
 `vmin` and `vmax` define the data range that the colormap (in our case the 'grey' map) covers. By default, the colormap covers the complete value range of the supplied data. For an image that will be somewhere between 0 and 255. If we want to brighten up the darker shades of grey, we can reduce the value of `vmax`
 </p>
 
-Exanding the above code:
+Expanding the above code:
     
 
 ```python
@@ -857,15 +715,7 @@ Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'img_
 Detailed traceback:
   File "<string>", line 1, in <module>
 fig.colorbar(p1, ax=ax[0], shrink=0.4)
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'p1' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
 fig.colorbar(p2, ax=ax[1], shrink=0.4)
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'p2' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
 fig.colorbar(p3, ax=ax[2], shrink=0.4);
 Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'p3' is not defined
 
@@ -970,7 +820,8 @@ Now, we can see all three viewing planes for this 3-dimensional brain scan!
 #### End of chapter Exercises
 
 **Assignment**
-Using the image from the the beginning of this lesson, "rat_cerebellum.jpg", do the following tasks:
+
+Using the image from the beginning of this lesson, "rat_cerebellum.jpg", do the following tasks:
 
 1. Import the image and display it.
 
@@ -980,7 +831,7 @@ Using the image from the the beginning of this lesson, "rat_cerebellum.jpg", do 
 
 4. Plot the three masks and the corresponding masked images.
 
-5. Using your masks, approximate the relative amounts of synaptophysin, IP3R, and DNA in the image. To do this, you can assume that the number of red pixels represents synaptophysin, green pixels represents IP3R and blue pixels represent DNA. The results will vary depending on the setting of the thresholds. How do different theshold values change your results?
+5. Using your masks, approximate the relative amounts of synaptophysin, IP3R, and DNA in the image. To do this, you can assume that the number of red pixels represents synaptophysin, green pixels represents IP3R and blue pixels represent DNA. The results will vary depending on the setting of the thresholds. How do different threshold values change your results?
 
 6. Change the resolution of your image to different values. How does the resolution affect your results?
 
@@ -998,30 +849,16 @@ from matplotlib.image import imread
 img_task = imread('fig/rat_cerebellum.jpg')
 ```
 
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): UnidentifiedImageError: cannot identify image file 'fig/rat_cerebellum.jpg'
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-  File "/home/runner/.virtualenvs/r-env/lib/python3.10/site-packages/matplotlib/image.py", line 1560, in imread
-    with img_open(fname) as image:
-  File "/home/runner/.virtualenvs/r-env/lib/python3.10/site-packages/PIL/Image.py", line 3123, in open
-    raise UnidentifiedImageError(
-```
-
 
 ```python
 ## Display the image
 
-from matplotlib.pyplot import subplots
+from matplotlib.pyplot import subplots, show
 
 fig, ax = subplots(figsize=(20, 10))
 
 ax.imshow(img_task, cmap='gray');
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'img_task' is not defined
 
-Detailed traceback:
-  File "<string>", line 1, in <module>
 show()
 ```
 
@@ -1032,41 +869,18 @@ show()
 
 ```python
 red_channel   = img_task[:, :, 0]
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'img_task' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
 green_channel = img_task[:, :, 1]
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'img_task' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
 blue_channel  = img_task[:, :, 2]
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'img_task' is not defined
 
-Detailed traceback:
-  File "<string>", line 1, in <module>
 fig, ax = subplots(ncols=3, figsize=(20, 5))
 
 ax[0].hist(red_channel.flatten(), bins=50)
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'red_channel' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
 ax[0].set_xlabel("Pixel intensity", fontsize=16)
 ax[0].set_xlabel("Red channel")
 ax[1].hist(green_channel.flatten(), bins=50)
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'green_channel' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
 ax[1].set_xlabel("Pixel intensity", fontsize=16)
 ax[1].set_xlabel("Green channel")
 ax[2].hist(blue_channel.flatten(), bins=50)
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'blue_channel' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
 ax[2].set_xlabel("Pixel intensity", fontsize=16)
 ax[2].set_xlabel("Blue channel");
 
@@ -1080,35 +894,12 @@ show()
 fig, ax = subplots(ncols=3, figsize=(20, 10))
 
 imgplot_red   = ax[0].imshow(red_channel, cmap="Reds")
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'red_channel' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
 imgplot_green = ax[1].imshow(green_channel, cmap="Greens")
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'green_channel' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
 imgplot_blue  = ax[2].imshow(blue_channel, cmap="Blues")
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'blue_channel' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
 fig.colorbar(imgplot_red,   ax=ax[0], shrink=0.5)
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'imgplot_red' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
 fig.colorbar(imgplot_green, ax=ax[1], shrink=0.5)
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'imgplot_green' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
 fig.colorbar(imgplot_blue,  ax=ax[2], shrink=0.5);
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'imgplot_blue' is not defined
 
-Detailed traceback:
-  File "<string>", line 1, in <module>
 show()
 ```
 
@@ -1119,72 +910,26 @@ show()
 
 ```python
 red_mask   = red_channel   > 120
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'red_channel' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
 green_mask = green_channel > 100
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'green_channel' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
 blue_mask  = blue_channel  > 100
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'blue_channel' is not defined
 
-Detailed traceback:
-  File "<string>", line 1, in <module>
 red_masked   = red_channel*red_mask
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'red_channel' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
 green_masked = green_channel*green_mask
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'green_channel' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
 blue_masked  = blue_channel*blue_mask
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'blue_channel' is not defined
 
-Detailed traceback:
-  File "<string>", line 1, in <module>
 fig, ax = subplots(nrows=3, ncols=2, figsize=(18, 20))
 
 ax[0, 0].imshow(red_mask, cmap='gray')
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'red_mask' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
 ax[0, 0].set_title('Red binary mask', fontsize=16)
 ax[0, 1].imshow(red_masked, cmap='Reds')
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'red_masked' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
 ax[0, 1].set_title('Masked image', fontsize=16)
 ax[1, 0].imshow(green_mask, cmap='gray')
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'green_mask' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
 ax[1, 0].set_title('Green binary mask', fontsize=16)
 ax[1, 1].imshow(green_masked, cmap='Greens')
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'green_masked' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
 ax[1, 1].set_title('Masked image', fontsize=16)
 ax[2, 0].imshow(blue_mask, cmap='gray')
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'blue_mask' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
 ax[2, 0].set_title('Blue binary mask', fontsize=16)
 ax[2, 1].imshow(blue_masked, cmap='Blues')
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'blue_masked' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
 ax[2, 1].set_title('Masked image', fontsize=16);
 
 show()
@@ -1196,41 +941,15 @@ show()
 
 
 ```python
+from numpy import sum as numpy_sum
 total_pixels = img_task.shape[0]*img_task.shape[1]
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'img_task' is not defined
 
-Detailed traceback:
-  File "<string>", line 1, in <module>
-red_counts   = sum(red_mask)
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'red_mask' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-green_counts = sum(green_mask)
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'green_mask' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-blue_counts  = sum(blue_mask)
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'blue_mask' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
+red_counts   = numpy_sum(red_mask)
+green_counts = numpy_sum(green_mask)
+blue_counts  = numpy_sum(blue_mask)
 print("Approximately %d"%(red_counts/total_pixels*100)+"% of the image is synaptophysin")
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'red_counts' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
 print("Approximately %d"%(green_counts/total_pixels*100)+"% of the image is IP3R")
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'green_counts' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
 print("Approximately %d"%(blue_counts/total_pixels*100)+"% of the image is DNA") 
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'blue_counts' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
 ```
 
 ### Q6
