@@ -105,7 +105,7 @@ def plot_series(data, sr):
 ## Example: Normal and Pathological EEG
 
 <p style='text-align: justify;'>
-As an example, let us import two sets of time series data and convert them to numpy arrays, here called _data_back_ and _data_epil_. They represent human electroencephalogram (EEG) as recorded during normal _background_ activity and during an epileptic seizure called _absence_ seizure. 
+As an example, let us import two sets of time series data and convert them to Numpy arrays, here called _data_back_ and _data_epil_. They represent human electroencephalogram (EEG) as recorded during normal _background_ activity and during an epileptic seizure called _absence_ seizure. 
 </p>
 
 
@@ -157,7 +157,7 @@ The row indices and column names for the seizure data look the same. The names o
 </p>
 
 <p style='text-align: justify;'>
-We can now use the plot function from above to plot the data. Note from the definition (first line) that two input arguments are reqired: the data set and the sampling rate. 
+We can now use the plot function from above to plot the data. Note from the definition (first line) that two input arguments are required: the data set and the sampling rate. 
 </p>
 
 
@@ -389,7 +389,7 @@ show()
 <img src="fig/04-time_series-rendered-unnamed-chunk-11-7.png" width="672" style="display: block; margin: auto;" />
 
 <p style='text-align: justify;'>
-The frequency range from 8 to 13 Hz is referred to as alpha band in the electroencephalogram. It is thought that this represents a kind of idling rhythm of the brain, i.e. an activity where the brain is not activily processing sensory input. 
+The frequency range from 8 to 13 Hz is referred to as alpha band in the electroencephalogram. It is thought that this represents a kind of idling rhythm of the brain, i.e. an activity where the brain is not actively processing sensory input. 
 </p>
 
 :::::::::::::::::::::::::::::: challenge 
@@ -442,7 +442,7 @@ The Fourier spectrum decomposes the time series into a sum of sine waves. The sp
 </p>
 
 <p style='text-align: justify;'>
-However, the assumption behind the Fourier transform is that the data are provided as in infinitely long stationary time series. These assumptions are not fullfilled as the data are finite and stationarity of a biological system can typically not be guaranteed. Thus, interpretation needs to be cautious. 
+However, the assumption behind the Fourier transform is that the data are provided as in infinitely long stationary time series. These assumptions are not fulfilled as the data are finite and stationarity of a biological system can typically not be guaranteed. Thus, interpretation needs to be cautious. 
 </p>
 
 #### **Fourier Transform of EEG data**
@@ -735,7 +735,7 @@ Using the code from this lesson, import the data from the file `P1_Seizure1.csv`
 
 4. Fourier transform both filtered data sets and display the Fourier spectra of the first 4 channels. What are the strongest frequencies in the two sets?
 
-5. Plot the correlation matrices of both data sets. Which challes show the strongest change in correlations?
+5. Plot the correlation matrices of both data sets. Which channels show the strongest change in correlations?
 
 ::::::::::::::::::::: solution
 

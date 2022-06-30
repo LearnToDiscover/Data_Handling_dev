@@ -1198,7 +1198,7 @@ providing ‘2’ will thus yield either ‘0’ or ‘1’ only.
 </h3>
 <pre class="output" tabindex="0"><code>Number of rows:   18
 Number of Labels: 18
-Labels:           [1 0 0 1 0 0 0 1 1 0 0 0 1 0 1 1 0 0]</code></pre>
+Labels:           [1 0 0 1 1 0 0 0 0 1 1 0 1 0 0 1 1 0]</code></pre>
 </div>
 <p>Note how we obtain the number of rows (18) using <code>len</code> and
 do not put it directly into the code.</p>
@@ -1227,7 +1227,7 @@ create a column with more than two randomly assigned labels e.g. (0, 1,
 1  3.669026  125.663330       0
 2  2.789910  105.821810       0
 3  2.939900   98.172772       1
-4  5.426060   97.931489       0</code></pre>
+4  5.426060   97.931489       1</code></pre>
 </div>
 <p style="text-align: justify;">
 Now we can use the information contained in ‘gender’ to filter the data
@@ -1246,19 +1246,19 @@ which of the rows are labelled as ‘1’:
 1     False
 2     False
 3      True
-4     False
+4      True
 5     False
 6     False
-7      True
-8      True
-9     False
-10    False
+7     False
+8     False
+9      True
+10     True
 11    False
 12     True
 13    False
-14     True
+14    False
 15     True
-16    False
+16     True
 17    False
 Name: gender, dtype: bool</code></pre>
 </div>
@@ -1281,11 +1281,12 @@ the rows where the condition was found to be True:
 <pre class="output" tabindex="0"><code>     calcium      sodium  gender
 0   3.455582  112.690980       1
 3   2.939900   98.172772       1
-7   3.571320  112.647360       1
-8   4.300067  132.031720       1
+4   5.426060   97.931489       1
+9   1.369419  118.499010       1
+10  2.550962  117.373730       1
 12  3.664987  105.346410       1
-14  3.718798  125.021060       1
-15  1.865868  112.075420       1</code></pre>
+15  1.865868  112.075420       1
+16  3.272809  117.588040       1</code></pre>
 </div>
 <p>Using the Boolean, we only pick the rows that are labelled ‘1’ and
 thus get a subset of the data according to the label.</p>
@@ -1324,7 +1325,7 @@ check the number of rows of that subset.</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>10 samples are labelled "male".</code></pre>
+<pre class="output" tabindex="0"><code>11 samples are labelled "male".</code></pre>
 </div>
 </div>
 </div>
@@ -4266,7 +4267,7 @@ the resolution affect your results?</p></li>
   Please check these solutions only after submitting the assignments.
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="q1">Q1<a class="anchor" aria-label="anchor" href="#q1"></a>
@@ -4552,7 +4553,7 @@ activate it and make it available for later use.
 <hr class="half-width">
 <p style="text-align: justify;">
 As an example, let us import two sets of time series data and convert
-them to numpy arrays, here called <em>data_back</em> and
+them to Numpy arrays, here called <em>data_back</em> and
 <em>data_epil</em>. They represent human electroencephalogram (EEG) as
 recorded during normal <em>background</em> activity and during an
 epileptic seizure called <em>absence</em> seizure.
@@ -4615,7 +4616,7 @@ stands for the frontal lobe.
 </p>
 <p style="text-align: justify;">
 We can now use the plot function from above to plot the data. Note from
-the definition (first line) that two input arguments are reqired: the
+the definition (first line) that two input arguments are required: the
 data set and the sampling rate.
 </p>
 <div class="codewrapper sourceCode" id="cb6">
@@ -4871,7 +4872,7 @@ the low and the high cut-off.</p>
 The frequency range from 8 to 13 Hz is referred to as alpha band in the
 electroencephalogram. It is thought that this represents a kind of
 idling rhythm of the brain, i.e. an activity where the brain is not
-activily processing sensory input.
+actively processing sensory input.
 </p>
 <div id="challenge1" class="callout challenge">
 <div class="callout-square">
@@ -4893,7 +4894,7 @@ the seizure EEG. Note the differences.</p>
   DIY ANSWER
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4941,8 +4942,8 @@ original data.
 <p style="text-align: justify;">
 However, the assumption behind the Fourier transform is that the data
 are provided as in infinitely long stationary time series. These
-assumptions are not fullfilled as the data are finite and stationarity
-of a biological system can typically not be guaranteed. Thus,
+assumptions are not fulfilled as the data are finite and stationarity of
+a biological system can typically not be guaranteed. Thus,
 interpretation needs to be cautious.
 </p>
 <figure id="fourier-transform-of-eeg-data"><h4><strong>Fourier Transform of EEG data</strong></h4>
@@ -5103,7 +5104,7 @@ harmonics?</p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -5191,7 +5192,7 @@ correlation pattern to the one from the background data.</p>
   DIY ANSWER
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -5276,7 +5277,7 @@ frequencies faster than 20 Hz.</p></li>
 <li><p>Fourier transform both filtered data sets and display the Fourier
 spectra of the first 4 channels. What are the strongest frequencies in
 the two sets?</p></li>
-<li><p>Plot the correlation matrices of both data sets. Which challes
+<li><p>Plot the correlation matrices of both data sets. Which channels
 show the strongest change in correlations?</p></li>
 </ol>
 </div>
@@ -5289,7 +5290,7 @@ show the strongest change in correlations?</p></li>
   Please check these solutions only after submitting the assignments.
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb26">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -5744,8 +5745,8 @@ any links that you are not going to use.
   "url": "https://carpentries.github.io/workbench-template-rmd/instructor/aio.html",
   "identifier": "https://carpentries.github.io/workbench-template-rmd/instructor/aio.html",
   "dateCreated": "2022-06-14",
-  "dateModified": "2022-06-29",
-  "datePublished": "2022-06-29"
+  "dateModified": "2022-06-30",
+  "datePublished": "2022-06-30"
 }
 
   </script><script>
